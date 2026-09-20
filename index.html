@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pushkar Shukla</title>
+
+<style>
+        /* Tab buttons ka style */
+        .tab-button { padding: 10px 20px; cursor: pointer; border: none; background: #eee; }
+        .tab-button.active { background: #007bff; color: white; }
+        
+        /* Content ka style (By default sab hidden rahenge) */
+        .tab-content { display: none; padding: 20px; border: 1px solid #ccc; }
+        .tab-content.active { display: block; }
+    </style>
+</head>
+<body>
+
+    <!-- Tab Buttons -->
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab(event, 'home')">Home</button>
+         <button class="tab-button" onclick="openTab(event, 'projects & photos')">Projects & Photos</button>
+        <button class="tab-button" onclick="openTab(event, 'construction cost estimator')">Construction Cost Estimator</button>
+        <button class="tab-button" onclick="openTab(event, 'about')">About</button>
+        <button class="tab-button" onclick="openTab(event, 'contact')">Contact</button>
+    </div>
+
+    <!-- Tab Contents -->
+    <div id="home" class="tab-content active">
+
+
+        <body>
+    <!-- स्टाइलिंग: CSS का इस्तेमाल करके सब कुछ सेंटर में लाया गया है -->
+    <div style="
+        display: flex; 
+        flex-direction: column; 
+        justify-content: center; 
+        align-items: center; 
+        height: 80vh; 
+        text-align: center;
+        background-color: black;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    ">
+        
+        <!-- आपकी मुख्य हेडिंग -->
+        <h1 style="font-size: 6rem; color: #a6bacf; margin-bottom: 10px;">
+            Hello, I'm Pushkar
+        </h1>
+         <span style="font-size: 1.1rem; color: #3498db; font-weight: bold;">
+                👷‍♂️ Civil Engineering Diploma Student
+            </span>
+        <!-- आपका बदला हुआ आकर्षक पैराग्राफ (Civil Engineering Touch) -->
+        <p
+
+        style="font-size: 1.5rem; color: #7f8c8d; max-width: 600px; line-height: 1.6;">
+            Welcome! Building ideas into reality. <br>
+           <div class="simple-footer">
+{
+    background-color: #121212;
+    color: #ffffff;
+    padding: 25px 40px;
+    text-align: left;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+}
+</div>
+<div class="simple-footer p ">
+{
+    margin: 0;
+}
+</div>
+
+        </p>
+
+    </div>
+
+
+
+   
+
+
+</body>
+
+
+
+
+
+
+
+
+    </div>
+
+
+     <div id="projects & photos" class="tab-content">
+
+
+     </div>
+
+
+     <div id="construction cost estimator" class="tab-content">
+<!-- ======================================================== -->
+<!-- CONSTRUCTION COST ESTIMATOR SECTION (START)             -->
+<!-- ======================================================== -->
+<section class="civ-estimator-section">
+    <div class="civ-estimator-container">
+        <div class="civ-estimator-header">
+            <h2>Construction Cost Estimator</h2>
+            <p>Calculate approximate building construction costs based on current Indian civil engineering standards.</p>
+        </div>
+        
+        <div class="civ-estimator-grid">
+            <!-- Input Form Box -->
+            <div class="civ-estimator-card civ-form-box">
+                <div class="civ-input-group">
+                    <label for="civ-area">Total Built-up Area (Sq. Ft.)</label>
+                    <input type="number" id="civ-area" placeholder="e.g. 1200" min="1">
+                </div>
+                
+                <div class="civ-input-group">
+                    <label for="civ-quality">Construction Quality / Class</label>
+                    <select id="civ-quality">
+                        <option value="1500">Normal / Class C (Avg. ₹1,500/sq.ft)</option>
+                        <option value="1800" selected>Standard / Class B (Avg. ₹1,800/sq.ft)</option>
+                        <option value="2500">Premium / Class A (Avg. ₹2,500/sq.ft)</option>
+                    </select>
+                </div>
+                
+                <button type="button" class="civ-calc-btn" onclick="civCalculateCost()">Calculate Estimate</button>
+            </div>
+
+            <!-- Output Results Box (Hidden by default, shows on click) -->
+            <div class="civ-estimator-card civ-results-box" id="civResultsBox">
+                <h3>Approximate Cost Breakup</h3>
+                
+                <div class="civ-result-item">
+                    <span>Cement (16.4%)</span>
+                    <strong id="civResCement">₹0</strong>
+                </div>
+                <div class="civ-result-item">
+                    <span>Steel / Sariya (24.6%)</span>
+                    <strong id="civResSteel">₹0</strong>
+                </div>
+                <div class="civ-result-item">
+                    <span>Sand & Aggregate (12.3%)</span>
+                    <strong id="civResSand">₹0</strong>
+                </div>
+                <div class="civ-result-item">
+                    <span>Bricks & Tiles (6.7%)</span>
+                    <strong id="civResBricks">₹0</strong>
+                </div>
+                <div class="civ-result-item">
+                    <span>Labour Cost (40.0%)</span>
+                    <strong id="civResLabour">₹0</strong>
+                </div>
+                
+                <div class="civ-total-row">
+                    <span>Total Estimated Cost</span>
+                    <span id="civResTotal">₹0</span>
+                </div>
+                
+                <p class="civ-disclaimer">*Disclaimer: These are approximate market values. Actual costs may vary depending on local material rates and site location.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CSS Styling Inside Style Tag -->
+<style>
+    .civ-estimator-section {
+        background-color: #f8fafc;
+        padding: 60px 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .civ-estimator-container {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+    .civ-estimator-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    .civ-estimator-header h2 {
+        color: #1e3a8a;
+        font-size: 28px;
+        margin-bottom: 10px;
+        font-weight: 700;
+    }
+    .civ-estimator-header p {
+        color: #64748b;
+        font-size: 16px;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    .civ-estimator-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        justify-content: center;
+    }
+    .civ-estimator-card {
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        flex: 1;
+        min-width: 300px;
+        max-width: 450px;
+        box-sizing: border-box;
+    }
+    .civ-input-group {
+        margin-bottom: 20px;
+    }
+    .civ-input-group label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #334155;
+        font-size: 15px;
+    }
+    .civ-input-group input, .civ-input-group select {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #cbd5e1;
+        border-radius: 6px;
+        box-sizing: border-box;
+        font-size: 16px;
+        color: #0f172a;
+        background-color: #fff;
+    }
+    .civ-calc-btn {
+        width: 100%;
+        background-color: #1e3a8a;
+        color: #ffffff;
+        border: none;
+        padding: 14px;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+    .civ-calc-btn:hover {
+        background-color: #0284c7;
+    }
+    .civ-results-box {
+        display: none; /* Hidden until button click */
+        border-left: 4px solid #1e3a8a;
+        animation: civFadeIn 0.5s ease;
+    }
+    @keyframes civFadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .civ-results-box h3 {
+        margin-top: 0;
+        color: #1e3a8a;
+        font-size: 20px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #e2e8f0;
+        padding-bottom: 10px;
+    }
+    .civ-result-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 12px;
+        font-size: 15px;
+        color: #475569;
+    }
+    .civ-result-item strong {
+        color: #0f172a;
+    }
+    .civ-total-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+        padding: 15px;
+        background-color: #e0f2fe;
+        border-radius: 8px;
+        font-weight: bold;
+        font-size: 18px;
+        color: #1e3a8a;
+    }
+    .civ-disclaimer {
+        font-size: 11px;
+        color: #94a3b8;
+        margin-top: 15px;
+        line-height: 1.4;
+    }
+</style>
+
+<!-- JavaScript Logic Inside Script Tag -->
+<script>
+function civCalculateCost() {
+    var areaInput = document.getElementById('civ-area').value;
+    var area = parseFloat(areaInput);
+    var ratePerSqFt = parseFloat(document.getElementById('civ-quality').value);
+    
+    if (!area || area <= 0) {
+        alert("Please enter a valid built-up area (Sq. Ft.) to calculate cost.");
+        return;
+    }
+    
+    // Total Cost calculation
+    var totalCost = area * ratePerSqFt;
+    
+    // Indian Standard Civil Engineering Cost Distribution
+    var cement = totalCost * 0.164;
+    var steel = totalCost * 0.246;
+    var sand = totalCost * 0.123;
+    var bricks = totalCost * 0.067;
+    var labour = totalCost * 0.40;
+    
+    // Injecting values into HTML with Indian Currency Formatting
+    document.getElementById('civResCement').innerText = '₹' + Math.round(cement).toLocaleString('en-IN');
+    document.getElementById('civResSteel').innerText = '₹' + Math.round(steel).toLocaleString('en-IN');
+    document.getElementById('civResSand').innerText = '₹' + Math.round(sand).toLocaleString('en-IN');
+    document.getElementById('civResBricks').innerText = '₹' + Math.round(bricks).toLocaleString('en-IN');
+    document.getElementById('civResLabour').innerText = '₹' + Math.round(labour).toLocaleString('en-IN');
+    document.getElementById('civResTotal').innerText = '₹' + Math.round(totalCost).toLocaleString('en-IN');
+    
+    // Slide/Show the result card smoothly
+    document.getElementById('civResultsBox').style.display = 'block';
+}
+</script>
+<!-- ======================================================== -->
+<!-- CONSTRUCTION COST ESTIMATOR SECTION (END)               -->
+<!-- ======================================================== -->
+
+     </div>
+
+
+
+
+
+    <div id="about" class="tab-content">
+
+        <!-- src -->
+         <img src="my-photo.jpeg" alt="my-photo" class="about-img" eidth="896" height="1067">
+
+        <p>My name is <strong>Pushkar Shukla</strong>.
+            I am from  <strong> 312-Shiv Sadan Near St. Basil School, Khirighat, Madwa nagar, Basti, Uttar Pradesh, India (Pincode: 272002)</strong>. 
+            Currently, I am a final year student of <strong> Diploma in Civil Engineering </strong>
+            at  <strong> Government Polytechnic Basti (4403)</strong>.</p>
+    </div>
+
+
+
+
+    <div id="contact" class="tab-content">
+<!-- Email Link -->
+ <p style="text-align: center;font-size: 18px; 
+ margin-top:20px;">
+ <strong>Email Me:</strong>
+<a href="mailto:your.email@example.com"
+style="color:#0066cc; text-decoration: none;
+font-weight: bold;"> er.pushkarshukla@gmail.com 
+</a>
+</p>
+    </div>
+
+
+
+    <script>
+        function openTab(evt, tabName) {
+            // Sabhi contents ko hide karo
+            var contents = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < contents.length; i++) {
+                contents[i].style.display = "none";
+            }
+
+            // Sabhi buttons se 'active' class hatao
+            var buttons = document.getElementsByClassName("tab-button");
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].className = buttons[i].className.replace(" active", "");
+            }
+
+            // Current tab ko show karo aur button ko active karo
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+
+ <footer class="simple-footer">
+        <p>&copy; 2026 Pushkar Shukla. All rights reserved.</p>
+    </footer>
+
+</html>
