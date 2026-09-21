@@ -13,6 +13,52 @@
         /* Content ka style (By default sab hidden rahenge) */
         .tab-content { display: none; padding: 20px; border: 1px solid #ccc; }
         .tab-content.active { display: block; }
+
+        /* Footer Base Styling */
+.site-footer {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  padding: 20px 10px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+/* YouTube Button Styling */
+.youtube-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #ff0000; /* YouTube Red color */
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover Effect */
+.youtube-btn:hover {
+  background-color: #cc0000;
+  transform: translateY(-2px);
+}
+
+/* Responsive adjustment for larger screens */
+@media (min-width: 768px) {
+  .footer-container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
     </style>
 </head>
 <body>
@@ -20,8 +66,11 @@
     <!-- Tab Buttons -->
     <div class="tabs">
         <button class="tab-button active" onclick="openTab(event, 'home')">Home</button>
-         <button class="tab-button" onclick="openTab(event, 'projects & photos')">Projects & Photos</button>
+        <button class="tab-button" onclick="openTab(event, 'projects')">Projects</button>
+        <button class="tab-button" onclick="openTab(event, 'site visits')">Site Visits</button>
         <button class="tab-button" onclick="openTab(event, 'construction cost estimator')">Construction Cost Estimator</button>
+        <button class="tab-button" onclick="openTab(event, 'certifications')">Certifications</button>
+        <button class="tab-button" onclick="openTab(event, 'tech blog')">Tech Blog</button>
         <button class="tab-button" onclick="openTab(event, 'about')">About</button>
         <button class="tab-button" onclick="openTab(event, 'contact')">Contact</button>
     </div>
@@ -49,13 +98,12 @@
             Hello, I'm Pushkar
         </h1>
          <span style="font-size: 1.1rem; color: #3498db; font-weight: bold;">
-                👷‍♂️ Civil Engineering Diploma Student
+                👷‍♂️ Civil Engineering Student
             </span>
         <!-- आपका बदला हुआ आकर्षक पैराग्राफ (Civil Engineering Touch) -->
         <p
 
         style="font-size: 1.5rem; color: #7f8c8d; max-width: 600px; line-height: 1.6;">
-          
         Welcome! Building ideas into reality. <br>
 
         </p>
@@ -68,7 +116,10 @@
 
     </div>
 
-     <div id="projects & photos" class="tab-content">
+     <div id="projects" class="tab-content">
+     </div>
+
+      <div id="site visits" class="tab-content">
      </div>
 
      <div id="construction cost estimator" class="tab-content">
@@ -303,9 +354,19 @@ function civCalculateCost() {
 
      </div>
 
+<div id="certifications" class="tab-content">
+
+
+</div>
+
+<div id="tech blog" class="tab-content">
+
+
+</div>
 
 
 
+   
 
     <div id="about" class="tab-content">
 
@@ -314,9 +375,7 @@ function civCalculateCost() {
          style="display: block; margin: 0 auto; border-radius: 10px; max-width: 100%; height: auto;">
 
         <p>My name is <strong>Pushkar Shukla</strong>.
-            I am from  <strong> 312-Shiv Sadan Near St. Basil School, Khirighat, Madwa nagar, Basti, Uttar Pradesh, India (Pincode: 272002)</strong>. 
-            Currently, I am a final year student of <strong> Diploma in Civil Engineering </strong>
-            at  <strong> Government Polytechnic Basti (4403)</strong>.</p>
+            I am from  <strong> Uttar Pradesh, India (Pincode: 272002)</strong>.</p>
     </div>
 
 
@@ -356,8 +415,20 @@ font-weight: bold;"> er.pushkarshukla@gmail.com
         }
     </script>
 
- <footer class="simple-footer">
-        <p>&copy; 2026 Pushkar Shukla. All rights reserved.</p>
+ <footer class="site-footer">
+    <div class="footer-container">
+        <P>&copy; 2026 Pushkar Shukla. All rights reserved.</P>
+
+        <!-- youtube social link container -->
+         <div class="footer-social">
+            <a href="https://youtube.com/@pushkarshukla" target="_blank" rel="noopener noreferrer" class="youtube-btn">
+                <svg xmlns="htp://w3.org" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="m23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 012S0 3.93502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9/377-.505a3.015 3.015 0 0 0 2.122-2. 136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+                Subscribe on YouTube
+            </a>
+         </div>
+    </div>
     </footer>
 
 </html>
