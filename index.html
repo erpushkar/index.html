@@ -105,9 +105,9 @@
         <button class="tab-button active" onclick="openTab(event, 'home')">Home</button>
         <button class="tab-button" onclick="openTab(event, 'projects')">Projects</button>
         <button class="tab-button" onclick="openTab(event, 'photos')">Photos</button>
-        <button class="tab-button" onclick="openTab(event, 'construction cost estimator')">Construction Cost Estimator</button>
+        <button class="tab-button" onclick="openTab(event, 'construction-cost-estimator')">Construction Cost Estimator</button>
         <button class="tab-button" onclick="openTab(event, 'certifications')">Certifications</button>
-        <button class="tab-button" onclick="openTab(event, 'tech blog')">Tech Blog</button>
+        <button class="tab-button" onclick="openTab(event, 'tech-blog')">Tech Blog</button>
         <button class="tab-button" onclick="openTab(event, 'about')">About</button>
         <button class="tab-button" onclick="openTab(event, 'contact')">Contact</button>
     </div>
@@ -116,42 +116,32 @@
     <div id="home" class="tab-content active">
 
 
-        <body>
     <!-- स्टाइलिंग: CSS का इस्तेमाल करके सब कुछ सेंटर में लाया गया है -->
     <div style="
-        display: flex; 
-        flex-direction: column; 
-        justify-content: center; 
-        align-items: center; 
-        height: 80vh; 
-        text-align: center;
-        background-image: linear-gradient(rgba(30, 58, 138, 0.55), rgba(59, 130, 246, 0.55)), url('my-photo.jpeg');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    ">
-        
-        <!-- आपकी मुख्य हेडिंग -->
-        <h1 style="font-size: 2.5rem; color: white; margin-bottom: 5px;">
-           <strong> Welcome! Building ideas into reality. </strong>
-        </h1>
-         <span style="font-size: 1rem; color: #3498db; font-weight: bold;">
-             👷Civil Engineer | Tech Enthusiast  
-            </span>
-        <!-- आपका बदला हुआ आकर्षक पैराग्राफ (Civil Engineering Touch) -->
-        <p
-
-        style="font-size: 1.2rem; color: #7f8c8d; max-width: 600px; line-height: 1.6;">
-        Hello, I'm Pushkar <br>
-
-        </p>
-
-    </div>
-
- 
-</body>
-
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+            padding: 3rem 1.5rem;
+            box-sizing: border-box;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.88), rgba(30, 64, 175, 0.68)), url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #ffffff;
+        ">
+            <p style="margin: 0 0 1rem; color: #93c5fd; font-size: 0.9rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;">
+                Civil Engineering &amp; Technology
+            </p>
+            <h1 style="margin: 0; font-size: clamp(2.25rem, 6vw, 4.5rem); line-height: 1.1; font-weight: 700; letter-spacing: -0.03em;">
+                Hello, I'm Pushkar
+            </h1>
+            <p style="max-width: 650px; margin: 1.5rem 0 0; color: #e2e8f0; font-size: clamp(1rem, 2vw, 1.25rem); line-height: 1.7;">
+                I combine practical civil engineering expertise with a passion for technology to turn thoughtful ideas into reliable, real-world solutions.
+            </p>
+        </div>
 
     </div>
 
@@ -161,7 +151,7 @@
       <div id="photos" class="tab-content">
      </div>
 
-     <div id="construction cost estimator" class="tab-content">
+    <div id="construction-cost-estimator" class="tab-content">
 <!-- ======================================================== -->
 <!-- CONSTRUCTION COST ESTIMATOR SECTION (START)             -->
 <!-- ======================================================== -->
@@ -231,7 +221,7 @@
 <!-- CSS Styling Inside Style Tag -->
 <style>
     .civ-estimator-section {
-        background-color:#1e3a8a ;
+        background-color: #f1f5f9;
         padding: 60px 20px;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
@@ -244,7 +234,10 @@
         margin-bottom: 40px;
     }
     .civ-estimator-header h2 {
-        color: #1e3a8a;
+        color: #ffffff;
+        background: #1e3a8a;
+        padding: 14px 20px;
+        border-radius: 10px;
         font-size: 28px;
         margin-bottom: 10px;
         font-weight: 700;
@@ -398,7 +391,7 @@ function civCalculateCost() {
 
 </div>
 
-<div id="tech blog" class="tab-content">
+<div id="tech-blog" class="tab-content">
 
 
 </div>
@@ -424,7 +417,7 @@ function civCalculateCost() {
  <p style="text-align: center;font-size: 18px; 
  margin-top:20px;">
  <strong>Email Me:</strong>
-<a href="mailto:your.email@example.com"
+<a href="mailto:er.pushkarshukla@gmail.com"
 style="color:#0066cc; text-decoration: none;
 font-weight: bold;"> er.pushkarshukla@gmail.com 
 </a>
@@ -501,4 +494,5 @@ font-weight: bold;"> er.pushkarshukla@gmail.com
 </div>
     </footer>
 
+    </body>
 </html>
