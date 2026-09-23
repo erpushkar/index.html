@@ -10,6 +10,11 @@
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body { margin: 0; color: var(--ink); background: #f8fafc; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { width: 100%; max-width: 100vw; overflow-x: hidden; }
+    body { line-height: 1.6; }
+    img, svg, input, select, button { max-width: 100%; }
+    .tab-content { width: 100%; }
+    #home > div { width: 100%; }
 
     .tabs {
       display: flex;
@@ -29,10 +34,16 @@
     .tab-button { padding: 11px 18px; cursor: pointer; border: 1px solid #e2e8f0; border-radius: 999px; background: #f8fafc; color: #334155; font-weight: 600; transition: transform .25s ease, background .25s ease, color .25s ease, box-shadow .25s ease; }
     .tab-button:hover { transform: translateY(-2px); box-shadow: 0 6px 14px rgba(30,58,138,.15); }
     .tab-button.active { background: var(--primary); color: white; border-color: var(--primary); box-shadow: 0 6px 16px rgba(30,58,138,.25); }
+    .tab-button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible, a:focus-visible { outline: 3px solid #38bdf8; outline-offset: 3px; }
         
         /* Content ka style (By default sab hidden rahenge) */
     .tab-content { display: none; padding: 20px; border: 1px solid #e2e8f0; animation: tabReveal .45s ease both; }
         .tab-content.active { display: block; }
+        .tab-content > h2 { color: var(--primary); text-align: center; margin: 8px auto 24px; font-size: clamp(1.7rem, 4vw, 2.4rem); }
+        .content-card { max-width: 1000px; margin: 0 auto; padding: 28px; background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; box-shadow: 0 8px 24px rgba(15,23,42,.08); }
+        .content-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; max-width: 1000px; margin: 0 auto; }
+        .content-grid article { padding: 22px; background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; box-shadow: 0 6px 18px rgba(15,23,42,.06); }
+        .content-grid h3 { color: var(--primary); margin-top: 0; }
 
     @keyframes tabReveal { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
     #home > div { border-radius: 18px; overflow: hidden; box-shadow: 0 16px 40px rgba(15,23,42,.18); }
@@ -96,6 +107,19 @@
     justify-content: space-between;
   }
 }
+
+/* Make every section fit the available screen on phones and tablets. */
+@media (max-width: 767px) {
+    .tabs { padding: 10px; gap: 6px; }
+    .tab-button { flex: 1 1 auto; padding: 10px 12px; font-size: 14px; }
+    .tab-content { padding: 12px; }
+    .civ-estimator-section { padding: 30px 12px; }
+    .civ-estimator-card,
+    .civ-concrete-calculator { min-width: 0; width: 100%; padding: 20px; }
+    .civ-estimator-header h2 { font-size: 23px; }
+    .civ-total-row, .civ-result-item { gap: 12px; }
+    .civ-result-item span:first-child { overflow-wrap: anywhere; }
+}
     </style>
 </head>
 <body>
@@ -132,23 +156,29 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #ffffff;
         ">
-            <p style="margin: 0 0 1rem; color: #93c5fd; font-size: 0.9rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;">
-                Civil Engineering &amp; Technology
-            </p>
             <h1 style="margin: 0; font-size: clamp(2.25rem, 6vw, 4.5rem); line-height: 1.1; font-weight: 700; letter-spacing: -0.03em;">
                 Hello, I'm Pushkar
             </h1>
-            <p style="max-width: 650px; margin: 1.5rem 0 0; color: #e2e8f0; font-size: clamp(1rem, 2vw, 1.25rem); line-height: 1.7;">
-                I combine practical civil engineering expertise with a passion for technology to turn thoughtful ideas into reliable, real-world solutions.
-            </p>
         </div>
 
     </div>
 
      <div id="projects" class="tab-content">
+        <h2>Projects</h2>
+        <div class="content-grid">
+            <article>
+                <h3>Construction Cost Estimator</h3>
+                <p>Calculate approximate building construction costs and concrete material requirements for residential projects.</p>
+                <button type="button" class="civ-calc-btn" onclick="openTab(event, 'construction-cost-estimator')">Open Estimator</button>
+            </article>
+            <article><h3>Engineering Learning</h3><p>Notes and resources focused on civil engineering concepts and site practices.</p></article>
+            <article><h3>Digital Solutions</h3><p>Simple, accessible technology solutions designed to solve everyday problems.</p></article>
+        </div>
      </div>
 
       <div id="photos" class="tab-content">
+        <h2>Photos</h2>
+        <div class="content-card"><p>Project photographs and field experiences will be added here soon.</p></div>
      </div>
 
     <div id="construction-cost-estimator" class="tab-content">
@@ -214,6 +244,42 @@
                 
                 <p class="civ-disclaimer">*Disclaimer: These are approximate market values. Actual costs may vary depending on local material rates and site location.</p>
             </div>
+        </div>
+
+        <!-- Concrete Grade Calculator -->
+        <div class="civ-concrete-calculator">
+            <h3>Concrete Grade Calculator</h3>
+            <p>Estimate the materials required for nominal concrete mixes.</p>
+            <div class="civ-concrete-inputs">
+                <div class="civ-input-group">
+                    <label for="concrete-volume">Concrete Volume (m³)</label>
+                    <input type="number" id="concrete-volume" min="0.01" step="0.01" placeholder="e.g. 1.00">
+                </div>
+                <div class="civ-input-group">
+                    <label for="concrete-grade">Concrete Grade</label>
+                    <select id="concrete-grade">
+                        <option value="1:5:10">M5 — 1:5:10 (cement:sand:aggregate), lean concrete</option>
+                        <option value="1:4:8">M7.5 — 1:4:8 (cement:sand:aggregate), lean concrete</option>
+                        <option value="1:3:6">M10 — 1:3:6 (cement:sand:aggregate), nominal mix</option>
+                        <option value="1:2:4">M15 — 1:2:4 (cement:sand:aggregate), nominal mix</option>
+                        <option value="1:1.5:3">M20 — 1:1.5:3 (cement:sand:aggregate), nominal mix</option>
+                        <option value="design:M25">M25 — Standard structural concrete (design mix)</option>
+                        <option value="design:M30">M30 — Standard structural concrete (design mix)</option>
+                        <option value="design:M35">M35 — Standard structural concrete (design mix)</option>
+                        <option value="design:M40">M40 — Standard structural concrete (design mix)</option>
+                        <option value="design:M45">M45 — High-strength concrete (design mix)</option>
+                        <option value="design:M50">M50 — High-strength concrete (design mix)</option>
+                        <option value="design:M55">M55 — High-strength concrete (design mix)</option>
+                        <option value="design:M60">M60 — High-strength concrete (design mix)</option>
+                        <option value="design:M65">M65 — High-strength concrete (design mix)</option>
+                        <option value="design:M70">M70 — High-strength concrete (design mix)</option>
+                        <option value="design:M75">M75 — High-strength concrete (design mix)</option>
+                        <option value="design:M80">M80 — High-strength concrete (design mix)</option>
+                    </select>
+                </div>
+            </div>
+            <button type="button" class="civ-calc-btn" onclick="calculateConcreteMaterials()">Calculate Materials</button>
+            <div id="concrete-results" class="civ-concrete-results" aria-live="polite"></div>
         </div>
     </div>
 </section>
@@ -344,6 +410,27 @@
         margin-top: 15px;
         line-height: 1.4;
     }
+    .civ-concrete-calculator {
+        max-width: 930px;
+        margin: 30px auto 0;
+        padding: 30px;
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+    .civ-concrete-calculator h3 { margin: 0 0 8px; color: #1e3a8a; }
+    .civ-concrete-calculator p { margin: 0 0 20px; color: #64748b; }
+    .civ-concrete-inputs { display: flex; gap: 20px; flex-wrap: wrap; }
+    .civ-concrete-inputs .civ-input-group { flex: 1; min-width: 220px; }
+    .civ-concrete-results {
+        display: none;
+        margin-top: 20px;
+        padding: 16px;
+        background: #e0f2fe;
+        border-radius: 8px;
+        color: #1e3a8a;
+        line-height: 1.8;
+    }
 </style>
 
 <!-- JavaScript Logic Inside Script Tag -->
@@ -379,6 +466,43 @@ function civCalculateCost() {
     // Slide/Show the result card smoothly
     document.getElementById('civResultsBox').style.display = 'block';
 }
+
+function calculateConcreteMaterials() {
+    var volume = parseFloat(document.getElementById('concrete-volume').value);
+    var gradeValue = document.getElementById('concrete-grade').value;
+    var results = document.getElementById('concrete-results');
+
+    if (!volume || volume <= 0) {
+        alert('Please enter a valid concrete volume in cubic metres.');
+        return;
+    }
+
+    // M25 and above are design mixes; their proportions must be supplied by a mix-design laboratory.
+    if (gradeValue.indexOf('design:') === 0) {
+        var designGrade = gradeValue.replace('design:', '');
+        results.innerHTML = '<strong>' + designGrade + ' classification:</strong> Standard/high-strength structural concrete (design mix).<br>' +
+            'Use the approved mix-design proportions from a qualified laboratory; fixed nominal ratios are not applicable.';
+        results.style.display = 'block';
+        return;
+    }
+
+    var ratio = gradeValue.split(':').map(Number);
+
+    // Dry volume factor includes wastage and voids; cement is converted to 50 kg bags.
+    var dryVolume = volume * 1.54;
+    var totalRatio = ratio[0] + ratio[1] + ratio[2];
+    var cementVolume = dryVolume * ratio[0] / totalRatio;
+    var cementBags = cementVolume * 1440 / 50;
+    var sand = dryVolume * ratio[1] / totalRatio;
+    var aggregate = dryVolume * ratio[2] / totalRatio;
+
+    results.innerHTML = '<strong>Estimated requirement:</strong><br>' +
+        'Cement: ' + Math.ceil(cementBags) + ' bags (50 kg each)<br>' +
+        'Sand: ' + sand.toFixed(2) + ' m³<br>' +
+        'Coarse Aggregate: ' + aggregate.toFixed(2) + ' m³<br>' +
+        '<small>Approximate values; verify structural requirements with a qualified engineer.</small>';
+    results.style.display = 'block';
+}
 </script>
 <!-- ======================================================== -->
 <!-- CONSTRUCTION COST ESTIMATOR SECTION (END)               -->
@@ -387,12 +511,14 @@ function civCalculateCost() {
      </div>
 
 <div id="certifications" class="tab-content">
-
+    <h2>Certifications</h2>
+    <div class="content-card"><p>Professional certifications and completed courses will be listed here.</p></div>
 
 </div>
 
 <div id="tech-blog" class="tab-content">
-
+    <h2>Tech Blog</h2>
+    <div class="content-card"><p>Articles about civil engineering, construction technology, productivity, and practical digital tools.</p></div>
 
 </div>
 
@@ -402,26 +528,42 @@ function civCalculateCost() {
 
     <div id="about" class="tab-content">
 
+        <h2>About Me</h2>
+
         <!-- src -->
          <img src="my-photo.jpeg" alt="Pushkar" style="width: 220px !important; height: auto !important; display: block; margin: 0 auto; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
 
-        <p>My name is <strong>Pushkar Shukla</strong>.
+        <div class="content-card"><p>My name is <strong>Pushkar Shukla</strong>.
             I am from  <strong> Uttar Pradesh, India (Pincode: 272002)</strong>.</p>
+        <p>I am a civil engineering enthusiast who enjoys learning about construction, estimating project costs, and exploring practical technology solutions. Through this website, I share my projects, photos, certifications, technical thoughts, and useful tools.</p>
+        <p>My goal is to keep improving my skills, create meaningful work, and contribute positively to the engineering and technology community.</p></div>
     </div>
 
 
 
 
     <div id="contact" class="tab-content">
-<!-- Email Link -->
- <p style="text-align: center;font-size: 18px; 
- margin-top:20px;">
- <strong>Email Me:</strong>
-<a href="mailto:er.pushkarshukla@gmail.com"
-style="color:#0066cc; text-decoration: none;
-font-weight: bold;"> er.pushkarshukla@gmail.com 
-</a>
-</p>
+        <form action="mailto:er.pushkarshukla@gmail.com" method="post" enctype="text/plain" style="max-width: 600px; margin: 20px auto; padding: 24px; background: #ffffff; border-radius: 12px; box-shadow: 0 4px 20px rgba(15,23,42,.08);">
+            <h2 style="margin-top: 0; color: #1e3a8a; text-align: center;">Contact Me</h2>
+
+            <label for="contact-name" style="display: block; margin: 14px 0 6px; font-weight: 600;">Name</label>
+            <input id="contact-name" name="Name" type="text" required placeholder="Enter your name" style="width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 16px;">
+
+            <label for="contact-email" style="display: block; margin: 14px 0 6px; font-weight: 600;">Email</label>
+            <input id="contact-email" name="Email" type="email" required placeholder="you@example.com" style="width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 16px;">
+
+            <label for="contact-dob" style="display: block; margin: 14px 0 6px; font-weight: 600;">Date of Birth</label>
+            <input id="contact-dob" name="Date of Birth" type="date" required style="width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 16px;">
+
+            <label for="contact-location" style="display: block; margin: 14px 0 6px; font-weight: 600;">Where are you from?</label>
+            <input id="contact-location" name="Location" type="text" required placeholder="City, State, Country" style="width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 16px;">
+
+            <label for="contact-message" style="display: block; margin: 14px 0 6px; font-weight: 600;">Message</label>
+            <textarea id="contact-message" name="Message" rows="5" required placeholder="Write your message" style="width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 16px; resize: vertical;"></textarea>
+
+            <button type="submit" style="width: 100%; margin-top: 18px; padding: 14px; border: 0; border-radius: 6px; background: #1e3a8a; color: #ffffff; font-size: 16px; font-weight: bold; cursor: pointer;">Send Details</button>
+            <p style="font-size: 12px; color: #64748b; text-align: center; margin-bottom: 0;">Submit karne par aapke email app mein message open hoga.</p>
+        </form>
     </div>
 
 
