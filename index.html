@@ -120,6 +120,45 @@
     .civ-total-row, .civ-result-item { gap: 12px; }
     .civ-result-item span:first-child { overflow-wrap: anywhere; }
 }
+
+    /* Professional visual refinements */
+    :root { --primary: #123b69; --accent: #0f766e; --ink: #1f2937; --muted: #64748b; --surface: #ffffff; }
+    body { background: #f1f5f9; color: var(--ink); font-weight: 400; }
+    .tabs { justify-content: flex-start; padding: 14px max(20px, 4vw); gap: 10px; border-bottom: 1px solid #e2e8f0; }
+    .tab-button { background: transparent; border-color: transparent; color: #475569; font-size: .95rem; }
+    .tab-button:hover { background: #e2e8f0; color: var(--primary); }
+    .tab-button.active { background: var(--primary); color: #fff; }
+    .tab-button { animation: buttonEnter .45s ease both; }
+    .tab-button:nth-child(2) { animation-delay: .04s; }
+    .tab-button:nth-child(3) { animation-delay: .08s; }
+    .tab-button:nth-child(4) { animation-delay: .12s; }
+    .tab-button:nth-child(5) { animation-delay: .16s; }
+    .tab-button:nth-child(6) { animation-delay: .20s; }
+    .tab-button:nth-child(7) { animation-delay: .24s; }
+    .tab-content { min-height: 55vh; padding: clamp(24px, 5vw, 56px) clamp(16px, 4vw, 40px); border: 0; }
+    .tab-content > h2 { font-weight: 700; letter-spacing: -.02em; }
+    .content-card, .content-grid article { border-color: #e2e8f0; box-shadow: 0 10px 30px rgba(15,23,42,.06); }
+    .content-card { padding: clamp(22px, 4vw, 36px); }
+    .content-grid article { transition: transform .25s ease, box-shadow .25s ease; }
+    .content-grid article:hover { transform: translateY(-4px); box-shadow: 0 16px 32px rgba(15,23,42,.1); }
+    .content-grid article { animation: cardEnter .6s ease both; }
+    .content-grid article:nth-child(2) { animation-delay: .12s; }
+    .content-grid article:nth-child(3) { animation-delay: .24s; }
+    .content-grid h3, .content-card h2 { color: var(--primary); }
+    a { color: #0369a1; font-weight: 600; }
+    .civ-estimator-section { background: #f8fafc; }
+    .civ-estimator-header h2 { background: linear-gradient(135deg, #123b69, #155e75); }
+    .civ-calc-btn { background: var(--primary); }
+    .site-footer { margin-top: 24px; border-top: 4px solid var(--accent); }
+    .content-card { animation: cardEnter .6s ease both; }
+    .civ-calc-btn { transition: transform .2s ease, box-shadow .2s ease, background .3s ease; }
+    .civ-calc-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(18,59,105,.24); }
+    @keyframes buttonEnter { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes cardEnter { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 767px) {
+        .tabs { justify-content: center; }
+        .tab-button { font-size: .85rem; }
+    }
     </style>
 </head>
 <body>
@@ -128,12 +167,11 @@
     <div class="tabs">
         <button class="tab-button active" onclick="openTab(event, 'home')">Home</button>
         <button class="tab-button" onclick="openTab(event, 'projects')">Projects</button>
+        <button class="tab-button" onclick="openTab(event, 'concrete-grade-calculator')">Concrete Grade Calculator</button>
         <button class="tab-button" onclick="openTab(event, 'photos')">Photos</button>
-        <button class="tab-button" onclick="openTab(event, 'construction-cost-estimator')">Construction Cost Estimator</button>
         <button class="tab-button" onclick="openTab(event, 'certifications')">Certifications</button>
         <button class="tab-button" onclick="openTab(event, 'tech-blog')">Tech Blog</button>
         <button class="tab-button" onclick="openTab(event, 'about')">About</button>
-        <button class="tab-button" onclick="openTab(event, 'contact')">Contact</button>
     </div>
 
     <!-- Tab Contents -->
@@ -159,8 +197,15 @@
             <h1 style="margin: 0; font-size: clamp(2.25rem, 6vw, 4.5rem); line-height: 1.1; font-weight: 700; letter-spacing: -0.03em;">
                 Hello, I'm Pushkar
             </h1>
+            <p style="max-width: 680px; margin: 1.25rem 0 0; font-size: clamp(1rem, 2vw, 1.25rem); color: rgba(255,255,255,.88);">
+                Civil engineering enthusiast creating practical solutions for construction, estimating, and technology.
+            </p>
         </div>
 
+        <div class="content-card" style="text-align: center; margin-top: 24px;">
+            <h2>Contact Me</h2>
+            <p><strong>Email: <a href="mailto:er.pushkarshukla@gmail.com">er.pushkarshukla@gmail.com</a></strong></p>
+        </div>
     </div>
 
      <div id="projects" class="tab-content">
@@ -169,12 +214,53 @@
             <article>
                 <h3>Construction Cost Estimator</h3>
                 <p>Calculate approximate building construction costs and concrete material requirements for residential projects.</p>
-                <button type="button" class="civ-calc-btn" onclick="openTab(event, 'construction-cost-estimator')">Open Estimator</button>
+                <button class="tab-button" type="button" onclick="openTab(event, 'construction-cost-estimator')">Open Estimator</button>
             </article>
             <article><h3>Engineering Learning</h3><p>Notes and resources focused on civil engineering concepts and site practices.</p></article>
             <article><h3>Digital Solutions</h3><p>Simple, accessible technology solutions designed to solve everyday problems.</p></article>
         </div>
      </div>
+
+    <div id="concrete-grade-calculator" class="tab-content">
+        <h2>Concrete Grade Calculator</h2>
+        <div class="content-card concrete-calculator-card">
+            <div class="civ-input-group">
+                <label for="concrete-volume">Concrete Volume (m³)</label>
+                <input type="number" id="concrete-volume" min="0.01" step="0.01" placeholder="e.g. 10">
+            </div>
+            <div class="civ-input-group">
+                <label for="concrete-grade">Concrete Grade</label>
+                <select id="concrete-grade">
+                    <option value="M5">M5 (1:5:10)</option>
+                    <option value="M7.5">M7.5 (1:4:8)</option>
+                    <option value="M10">M10 (1:3:6)</option>
+                    <option value="M15">M15 (1:2:4)</option>
+                    <option value="M20" selected>M20 (1:1.5:3)</option>
+                    <option value="M25">M25 (1:1:2)</option>
+                    <option value="M30">M30 (approx. 1:0.75:1.5)</option>
+                    <option value="M35">M35 (approx. 1:0.65:1.3)</option>
+                    <option value="M40">M40 (approx. 1:0.55:1.1)</option>
+                    <option value="M45">M45 (approx. 1:0.5:1)</option>
+                    <option value="M50">M50 (approx. 1:0.45:0.9)</option>
+                    <option value="M55">M55 (approx. 1:0.4:0.8)</option>
+                    <option value="M60">M60 (approx. 1:0.35:0.7)</option>
+                    <option value="M65">M65 (approx. 1:0.32:0.64)</option>
+                    <option value="M70">M70 (approx. 1:0.3:0.6)</option>
+                    <option value="M75">M75 (approx. 1:0.28:0.56)</option>
+                    <option value="M80">M80 (approx. 1:0.25:0.5)</option>
+                </select>
+                <small class="grade-note">As per IS 456: M5–M20 are nominal mixes. M25–M80 are design mixes; the indicative ratios below must be verified through an approved mix design.</small>
+            </div>
+            <button type="button" class="civ-calc-btn" onclick="calculateConcreteGrade()">Calculate Materials</button>
+            <div id="concrete-results" class="concrete-results" aria-live="polite">
+                <h3>Approximate Material Requirement</h3>
+                <p>Cement: <strong id="concrete-cement">0 bags</strong></p>
+                <p>Sand: <strong id="concrete-sand">0 m³</strong></p>
+                <p>Aggregate: <strong id="concrete-aggregate">0 m³</strong></p>
+                <small>*Based on dry volume factor 1.54. M25–M80 quantities are indicative only and must follow the approved IS 456 design mix.</small>
+            </div>
+        </div>
+    </div>
 
       <div id="photos" class="tab-content">
         <h2>Photos</h2>
@@ -246,41 +332,6 @@
             </div>
         </div>
 
-        <!-- Concrete Grade Calculator -->
-        <div class="civ-concrete-calculator">
-            <h3>Concrete Grade Calculator</h3>
-            <p>Estimate the materials required for nominal concrete mixes.</p>
-            <div class="civ-concrete-inputs">
-                <div class="civ-input-group">
-                    <label for="concrete-volume">Concrete Volume (m³)</label>
-                    <input type="number" id="concrete-volume" min="0.01" step="0.01" placeholder="e.g. 1.00">
-                </div>
-                <div class="civ-input-group">
-                    <label for="concrete-grade">Concrete Grade</label>
-                    <select id="concrete-grade">
-                        <option value="1:5:10">M5 — 1:5:10 (cement:sand:aggregate), lean concrete</option>
-                        <option value="1:4:8">M7.5 — 1:4:8 (cement:sand:aggregate), lean concrete</option>
-                        <option value="1:3:6">M10 — 1:3:6 (cement:sand:aggregate), nominal mix</option>
-                        <option value="1:2:4">M15 — 1:2:4 (cement:sand:aggregate), nominal mix</option>
-                        <option value="1:1.5:3">M20 — 1:1.5:3 (cement:sand:aggregate), nominal mix</option>
-                        <option value="design:M25">M25 — Standard structural concrete (design mix)</option>
-                        <option value="design:M30">M30 — Standard structural concrete (design mix)</option>
-                        <option value="design:M35">M35 — Standard structural concrete (design mix)</option>
-                        <option value="design:M40">M40 — Standard structural concrete (design mix)</option>
-                        <option value="design:M45">M45 — High-strength concrete (design mix)</option>
-                        <option value="design:M50">M50 — High-strength concrete (design mix)</option>
-                        <option value="design:M55">M55 — High-strength concrete (design mix)</option>
-                        <option value="design:M60">M60 — High-strength concrete (design mix)</option>
-                        <option value="design:M65">M65 — High-strength concrete (design mix)</option>
-                        <option value="design:M70">M70 — High-strength concrete (design mix)</option>
-                        <option value="design:M75">M75 — High-strength concrete (design mix)</option>
-                        <option value="design:M80">M80 — High-strength concrete (design mix)</option>
-                    </select>
-                </div>
-            </div>
-            <button type="button" class="civ-calc-btn" onclick="calculateConcreteMaterials()">Calculate Materials</button>
-            <div id="concrete-results" class="civ-concrete-results" aria-live="polite"></div>
-        </div>
     </div>
 </section>
 
@@ -410,27 +461,19 @@
         margin-top: 15px;
         line-height: 1.4;
     }
-    .civ-concrete-calculator {
-        max-width: 930px;
-        margin: 30px auto 0;
-        padding: 30px;
-        background: #ffffff;
-        border-radius: 12px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    }
-    .civ-concrete-calculator h3 { margin: 0 0 8px; color: #1e3a8a; }
-    .civ-concrete-calculator p { margin: 0 0 20px; color: #64748b; }
-    .civ-concrete-inputs { display: flex; gap: 20px; flex-wrap: wrap; }
-    .civ-concrete-inputs .civ-input-group { flex: 1; min-width: 220px; }
-    .civ-concrete-results {
+    .concrete-calculator-card { max-width: 650px; }
+    .concrete-results {
         display: none;
-        margin-top: 20px;
-        padding: 16px;
-        background: #e0f2fe;
+        margin-top: 24px;
+        padding: 20px;
+        background: #f0f9ff;
+        border-left: 4px solid #0284c7;
         border-radius: 8px;
-        color: #1e3a8a;
-        line-height: 1.8;
     }
+    .concrete-results h3 { margin-top: 0; color: #1e3a8a; }
+    .concrete-results p { display: flex; justify-content: space-between; gap: 12px; margin: 10px 0; }
+    .concrete-results small { color: #64748b; }
+    .grade-note { display: block; margin-top: 8px; color: #64748b; font-size: 12px; line-height: 1.4; }
 </style>
 
 <!-- JavaScript Logic Inside Script Tag -->
@@ -467,42 +510,38 @@ function civCalculateCost() {
     document.getElementById('civResultsBox').style.display = 'block';
 }
 
-function calculateConcreteMaterials() {
+function calculateConcreteGrade() {
     var volume = parseFloat(document.getElementById('concrete-volume').value);
-    var gradeValue = document.getElementById('concrete-grade').value;
-    var results = document.getElementById('concrete-results');
+    var grade = document.getElementById('concrete-grade').value;
+    var ratios = {
+        M5: [1, 5, 10], 'M7.5': [1, 4, 8], M10: [1, 3, 6],
+        M15: [1, 2, 4], M20: [1, 1.5, 3], M25: [1, 1, 2],
+        M30: [1, 0.75, 1.5], M35: [1, 0.65, 1.3],
+        M40: [1, 0.55, 1.1], M45: [1, 0.5, 1],
+        M50: [1, 0.45, 0.9], M55: [1, 0.4, 0.8],
+        M60: [1, 0.35, 0.7], M65: [1, 0.32, 0.64],
+        M70: [1, 0.3, 0.6], M75: [1, 0.28, 0.56], M80: [1, 0.25, 0.5]
+    };
 
     if (!volume || volume <= 0) {
-        alert('Please enter a valid concrete volume in cubic metres.');
+        alert('Please enter a valid concrete volume.');
         return;
     }
 
-    // M25 and above are design mixes; their proportions must be supplied by a mix-design laboratory.
-    if (gradeValue.indexOf('design:') === 0) {
-        var designGrade = gradeValue.replace('design:', '');
-        results.innerHTML = '<strong>' + designGrade + ' classification:</strong> Standard/high-strength structural concrete (design mix).<br>' +
-            'Use the approved mix-design proportions from a qualified laboratory; fixed nominal ratios are not applicable.';
-        results.style.display = 'block';
-        return;
-    }
-
-    var ratio = gradeValue.split(':').map(Number);
-
-    // Dry volume factor includes wastage and voids; cement is converted to 50 kg bags.
+    var ratio = ratios[grade];
     var dryVolume = volume * 1.54;
-    var totalRatio = ratio[0] + ratio[1] + ratio[2];
-    var cementVolume = dryVolume * ratio[0] / totalRatio;
-    var cementBags = cementVolume * 1440 / 50;
-    var sand = dryVolume * ratio[1] / totalRatio;
-    var aggregate = dryVolume * ratio[2] / totalRatio;
+    var totalParts = ratio[0] + ratio[1] + ratio[2];
+    var cementVolume = dryVolume * ratio[0] / totalParts;
+    var cementBags = cementVolume / 0.035;
+    var sand = dryVolume * ratio[1] / totalParts;
+    var aggregate = dryVolume * ratio[2] / totalParts;
 
-    results.innerHTML = '<strong>Estimated requirement:</strong><br>' +
-        'Cement: ' + Math.ceil(cementBags) + ' bags (50 kg each)<br>' +
-        'Sand: ' + sand.toFixed(2) + ' m³<br>' +
-        'Coarse Aggregate: ' + aggregate.toFixed(2) + ' m³<br>' +
-        '<small>Approximate values; verify structural requirements with a qualified engineer.</small>';
-    results.style.display = 'block';
+    document.getElementById('concrete-cement').textContent = Math.ceil(cementBags) + ' bags';
+    document.getElementById('concrete-sand').textContent = sand.toFixed(2) + ' m³';
+    document.getElementById('concrete-aggregate').textContent = aggregate.toFixed(2) + ' m³';
+    document.getElementById('concrete-results').style.display = 'block';
 }
+
 </script>
 <!-- ======================================================== -->
 <!-- CONSTRUCTION COST ESTIMATOR SECTION (END)               -->
@@ -537,17 +576,12 @@ function calculateConcreteMaterials() {
             I am from  <strong>Basti, Uttar Pradesh, India (Pincode: 272002)</strong>.</p>
         <p>I am a civil engineering enthusiast who enjoys learning about construction, estimating project costs, and exploring practical technology solutions. Through this website, I share my projects, photos, certifications, technical thoughts, and useful tools.</p>
         <p>My goal is to keep improving my skills, create meaningful work, and contribute positively to the engineering and technology community.</p></div>
-    </div>
-
-
-
-
-    <div id="contact" class="tab-content">
-        <h2>Contact Me</h2>
-        <div class="content-card" style="text-align: center;">
+        <div class="content-card" style="text-align: center; margin-top: 24px;">
+            <h2>Contact Me</h2>
             <p><strong>Email: <a href="mailto:er.pushkarshukla@gmail.com">er.pushkarshukla@gmail.com</a></strong></p>
         </div>
     </div>
+
 
 
 
