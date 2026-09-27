@@ -6,21 +6,21 @@
     <title>PUSHKAR SHUKLA</title>
     <style>
         :root {
-            --primary: #c9a227;
-            --primary-deep: #9b7b14;
-            --accent: #f2d27a;
-            --ink: #eff3f8;
-            --muted: #b9c1cf;
-            --bg: #0b1117;
-            --bg-strong: #0f1720;
-            --panel: #111b25;
-            --panel-soft: #16232d;
-            --panel-alt: #0d151d;
-            --border: rgba(201,162,39,.28);
-            --shadow: rgba(2,6,23,.45);
-            --soft-shadow: rgba(15,23,42,.16);
-            --heading: #f7f2e9;
-            --link: #f5d77b;
+            --primary: #4cc9f0;
+            --primary-deep: #118ab2;
+            --accent: #7ef0d3;
+            --ink: #eaf8ff;
+            --muted: #b7cad4;
+            --bg: #07151d;
+            --bg-strong: #0d1d29;
+            --panel: #102534;
+            --panel-soft: #163447;
+            --panel-alt: #0d1a25;
+            --border: rgba(76,201,240,.26);
+            --shadow: rgba(3,10,18,.5);
+            --soft-shadow: rgba(7,21,29,.22);
+            --heading: #f4fbff;
+            --link: #8ae4ff;
         }
 
         * { box-sizing: border-box; }
@@ -31,8 +31,8 @@
             max-width: 100vw;
             overflow-x: hidden;
             background:
-                radial-gradient(circle at top, rgba(201,162,39,.12), transparent 28%),
-                linear-gradient(180deg, var(--bg) 0%, #0c1218 100%);
+                radial-gradient(circle at top, rgba(76,201,240,.15), transparent 28%),
+                linear-gradient(180deg, var(--bg) 0%, #091b26 100%);
             color: var(--ink);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
@@ -410,8 +410,13 @@
     </div>
 
     <div id="home" class="tab-content active">
-        <div style="display:flex; flex-direction:column; justify-content:center; align-items:center; min-height:80vh; padding:3rem 1.5rem; box-sizing:border-box; text-align:center; background:linear-gradient(135deg, #17130a, #b8860b, #ffd700); color:#fff;">
-            <h1 style="margin:0; font-size:clamp(2.25rem, 6vw, 4.5rem); line-height:1.1; font-weight:700; letter-spacing:-0.03em;">Hello, I'm Pushkar</h1>
+        <div style="position:relative; display:flex; flex-direction:column; justify-content:center; align-items:center; min-height:80vh; padding:3rem 1.5rem; box-sizing:border-box; text-align:center; background:linear-gradient(135deg, #0a1923 0%, #113349 35%, #1c4c66 100%); color:#edf7ff; overflow:hidden; border-radius:22px; border:1px solid rgba(125,211,252,.25); box-shadow:0 20px 50px rgba(9,15,23,.28);">
+            <div style="position:absolute; inset:0; background:radial-gradient(circle at top right, rgba(76,201,240,.25), transparent 30%), radial-gradient(circle at bottom left, rgba(126,240,211,.16), transparent 35%);"></div>
+            <div style="position:relative; z-index:1; max-width:900px;">
+                <p style="margin:0 0 12px; text-transform:uppercase; letter-spacing:.18em; font-size:.8rem; font-weight:700; color:#a9d8ea;">Civil Engineering & Construction</p>
+                <h1 style="margin:0; font-size:clamp(2.3rem, 6vw, 4.7rem); line-height:1.08; font-weight:700; letter-spacing:-0.04em; color:#f4fbff;">Hello, I'm Pushkar</h1>
+                <p style="margin:18px auto 0; max-width:650px; font-size:clamp(1rem, 2vw, 1.25rem); color:#d8ebf6; font-weight:500;">Building practical solutions, estimating smarter, and creating value through engineering discipline.</p>
+            </div>
         </div>
 
         <div class="content-card" style="text-align:center; margin-top:24px;">
