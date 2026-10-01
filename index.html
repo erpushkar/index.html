@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PUSHKAR SHUKLA</title>
+    <meta name="description" content="Pushkar Shukla — civil engineering, construction estimating, and practical digital solutions.">
+    <title>Pushkar Shukla | Civil Engineering Portfolio</title>
     <style>
         :root {
             --primary: #4cc9f0;
@@ -21,6 +22,7 @@
             --soft-shadow: rgba(7,21,29,.22);
             --heading: #f4fbff;
             --link: #8ae4ff;
+            --gold: #f3c969;
         }
 
         * { box-sizing: border-box; }
@@ -39,6 +41,9 @@
             font-weight: 400;
         }
 
+        ::selection { background: var(--primary); color: #06131b; }
+        h1, h2, h3 { overflow-wrap: anywhere; }
+
         img, svg, input, select, button { max-width: 100%; }
         a {
             color: var(--link);
@@ -53,18 +58,18 @@
             z-index: 20;
             display: flex;
             flex-wrap: wrap;
-            justify-content: flex-start;
+            justify-content: center;
             gap: 10px;
             padding: 14px max(20px, 4vw);
             border-bottom: 1px solid var(--border);
-            background: rgba(11,17,23,.9);
+            background: rgba(7,21,29,.92);
             backdrop-filter: blur(12px);
             box-shadow: 0 10px 30px rgba(2,6,23,.18);
         }
 
         .tab-button {
             padding: 11px 18px;
-            border: 1px solid rgba(201,162,39,.25);
+            border: 1px solid rgba(126,240,211,.28);
             border-radius: 999px;
             background: transparent;
             color: #dfe7ee;
@@ -76,17 +81,17 @@
 
         .tab-button:hover {
             transform: translateY(-2px);
-            background: rgba(201,162,39,.08);
+            background: rgba(76,201,240,.1);
             color: var(--accent);
-            border-color: rgba(201,162,39,.45);
-            box-shadow: 0 8px 20px rgba(201,162,39,.12);
+            border-color: rgba(126,240,211,.55);
+            box-shadow: 0 8px 20px rgba(76,201,240,.16);
         }
 
         .tab-button.active {
             background: linear-gradient(135deg, var(--primary), var(--accent));
             color: #0e1116;
             border-color: transparent;
-            box-shadow: 0 12px 26px rgba(201,162,39,.28);
+            box-shadow: 0 12px 26px rgba(76,201,240,.28);
         }
 
         .tab-button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible, a:focus-visible {
@@ -100,6 +105,8 @@
             padding: clamp(24px, 5vw, 56px) clamp(16px, 4vw, 40px);
             border: 0;
             animation: tabReveal .45s ease both;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .tab-content.active { display: block; }
@@ -135,6 +142,7 @@
             border-radius: 18px;
             box-shadow: 0 20px 45px var(--soft-shadow);
             color: var(--ink);
+            backdrop-filter: blur(8px);
         }
 
         .content-grid {
@@ -156,8 +164,8 @@
 
         .content-grid article:hover {
             transform: translateY(-4px);
-            box-shadow: 0 18px 34px rgba(201,162,39,.12);
-            border-color: rgba(201,162,39,.42);
+            box-shadow: 0 18px 34px rgba(76,201,240,.16);
+            border-color: rgba(76,201,240,.55);
         }
 
         .content-grid h3, .content-card h2 {
@@ -195,14 +203,14 @@
         }
 
         .civ-estimator-header h2 {
-            color: #10151b;
-            background: linear-gradient(135deg, #d7b55b, #c89f2a, #f3d483);
+            color: #06131b;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
             padding: 14px 20px;
             border-radius: 12px;
             font-size: 28px;
             margin-bottom: 10px;
             font-weight: 700;
-            box-shadow: 0 12px 24px rgba(201,162,39,.18);
+            box-shadow: 0 12px 24px rgba(76,201,240,.18);
         }
 
         .civ-estimator-header p {
@@ -253,7 +261,7 @@
         .civ-input-group input, .civ-input-group select {
             width: 100%;
             padding: 12px;
-            border: 1px solid rgba(201,162,39,.42);
+            border: 1px solid rgba(76,201,240,.42);
             border-radius: 8px;
             box-sizing: border-box;
             font-size: 16px;
@@ -263,8 +271,8 @@
         }
 
         .civ-input-group input:focus, .civ-input-group select:focus {
-            border-color: rgba(201,162,39,.7);
-            box-shadow: 0 0 0 3px rgba(201,162,39,.12);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(76,201,240,.12);
             outline: none;
         }
 
@@ -283,7 +291,7 @@
 
         .civ-calc-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 26px rgba(201,162,39,.26);
+            box-shadow: 0 12px 26px rgba(76,201,240,.26);
             filter: brightness(1.02);
         }
 
@@ -320,11 +328,11 @@
             align-items: center;
             margin-top: 20px;
             padding: 15px;
-            background: linear-gradient(135deg, #684d0d, #a57d16);
+            background: linear-gradient(135deg, #12617b, #168a8b);
             border-radius: 10px;
             font-weight: 700;
             font-size: 18px;
-            color: #fff7d7;
+            color: #efffff;
             border: 1px solid rgba(255,244,204,.18);
         }
 
@@ -386,7 +394,7 @@
         }
 
         @media (max-width: 767px) {
-            .tabs { justify-content: center; }
+            .tabs { justify-content: center; padding: 10px 12px; gap: 7px; }
             .tab-button { flex: 1 1 auto; padding: 10px 12px; font-size: 14px; }
             .tab-content { padding: 12px; }
             .civ-estimator-section { padding: 30px 12px; }
@@ -401,7 +409,6 @@
     <div class="tabs">
         <button class="tab-button active" onclick="openTab(event, 'home')">Home</button>
         <button class="tab-button" onclick="openTab(event, 'projects')">Projects</button>
-        <button class="tab-button" onclick="openTab(event, 'concrete-grade-calculator')">Concrete Grade Calculator</button>
         <button class="tab-button" onclick="openTab(event, 'photos')">Photos</button>
         <button class="tab-button" onclick="openTab(event, 'certifications')">Certifications</button>
         <button class="tab-button" onclick="openTab(event, 'tech-blog')">Tech Blog</button>
@@ -435,47 +442,6 @@
             </article>
             <article><h3>Engineering Learning</h3><p>Notes and resources focused on civil engineering concepts and site practices.</p></article>
             <article><h3>Digital Solutions</h3><p>Simple, accessible technology solutions designed to solve everyday problems.</p></article>
-        </div>
-    </div>
-
-    <div id="concrete-grade-calculator" class="tab-content">
-        <h2>Concrete Grade Calculator</h2>
-        <div class="content-card concrete-calculator-card">
-            <div class="civ-input-group">
-                <label for="concrete-volume">Concrete Volume (m³)</label>
-                <input type="number" id="concrete-volume" min="0.01" step="0.01" placeholder="e.g. 10">
-            </div>
-            <div class="civ-input-group">
-                <label for="concrete-grade">Concrete Grade</label>
-                <select id="concrete-grade">
-                    <option value="M5">M5 (1:5:10)</option>
-                    <option value="M7.5">M7.5 (1:4:8)</option>
-                    <option value="M10">M10 (1:3:6)</option>
-                    <option value="M15">M15 (1:2:4)</option>
-                    <option value="M20" selected>M20 (1:1.5:3)</option>
-                    <option value="M25">M25 (1:1:2)</option>
-                    <option value="M30">M30 (approx. 1:0.75:1.5)</option>
-                    <option value="M35">M35 (approx. 1:0.65:1.3)</option>
-                    <option value="M40">M40 (approx. 1:0.55:1.1)</option>
-                    <option value="M45">M45 (approx. 1:0.5:1)</option>
-                    <option value="M50">M50 (approx. 1:0.45:0.9)</option>
-                    <option value="M55">M55 (approx. 1:0.4:0.8)</option>
-                    <option value="M60">M60 (approx. 1:0.35:0.7)</option>
-                    <option value="M65">M65 (approx. 1:0.32:0.64)</option>
-                    <option value="M70">M70 (approx. 1:0.3:0.6)</option>
-                    <option value="M75">M75 (approx. 1:0.28:0.56)</option>
-                    <option value="M80">M80 (approx. 1:0.25:0.5)</option>
-                </select>
-                <small class="grade-note">As per IS 456: M5–M20 are nominal mixes. M25–M80 are design mixes; the indicative ratios below must be verified through an approved mix design.</small>
-            </div>
-            <button type="button" class="civ-calc-btn" onclick="calculateConcreteGrade()">Calculate Materials</button>
-            <div id="concrete-results" class="concrete-results" aria-live="polite">
-                <h3>Approximate Material Requirement</h3>
-                <p>Cement: <strong id="concrete-cement">0 bags</strong></p>
-                <p>Sand: <strong id="concrete-sand">0 m³</strong></p>
-                <p>Aggregate: <strong id="concrete-aggregate">0 m³</strong></p>
-                <small>*Based on dry volume factor 1.54. M25–M80 quantities are indicative only and must follow the approved IS 456 design mix.</small>
-            </div>
         </div>
     </div>
 
@@ -552,7 +518,7 @@
         <h2>About Me</h2>
         <img src="my-photo.jpeg" alt="Pushkar" style="width:220px; height:auto; display:block; margin:0 auto 1.5rem; border-radius:15px; box-shadow:0 4px 15px rgba(0,0,0,.2);">
         <div class="content-card">
-            <p>My name is <strong>Pushkar Shukla</strong>. I am from <strong>312-Shiv Sadan, Near St. Basil School, Khirighat, Madwanagar, Basti, Uttar Pradesh, India (Pincode: 272002)</strong>.</p>
+            <p>My name is <strong>Pushkar Shukla</strong>. I am from <strong>312-Shiv Sadan, Khirighat, Madwanagar, Basti, Uttar Pradesh, India (Pincode: 272002)</strong>.</p>
             <p>I am a civil engineering enthusiast who enjoys learning about construction, estimating project costs, and exploring practical technology solutions. Through this website, I share my projects, photos, certifications, technical thoughts, and useful tools.</p>
             <p>My goal is to keep improving my skills, create meaningful work, and contribute positively to the engineering and technology community.</p>
         </div>
@@ -615,37 +581,6 @@
             document.getElementById('civResultsBox').style.display = 'block';
         }
 
-        function calculateConcreteGrade() {
-            var volume = parseFloat(document.getElementById('concrete-volume').value);
-            var grade = document.getElementById('concrete-grade').value;
-            var ratios = {
-                M5: [1, 5, 10], 'M7.5': [1, 4, 8], M10: [1, 3, 6],
-                M15: [1, 2, 4], M20: [1, 1.5, 3], M25: [1, 1, 2],
-                M30: [1, 0.75, 1.5], M35: [1, 0.65, 1.3],
-                M40: [1, 0.55, 1.1], M45: [1, 0.5, 1],
-                M50: [1, 0.45, 0.9], M55: [1, 0.4, 0.8],
-                M60: [1, 0.35, 0.7], M65: [1, 0.32, 0.64],
-                M70: [1, 0.3, 0.6], M75: [1, 0.28, 0.56], M80: [1, 0.25, 0.5]
-            };
-
-            if (!volume || volume <= 0) {
-                alert('Please enter a valid concrete volume.');
-                return;
-            }
-
-            var ratio = ratios[grade];
-            var dryVolume = volume * 1.54;
-            var totalParts = ratio[0] + ratio[1] + ratio[2];
-            var cementVolume = dryVolume * ratio[0] / totalParts;
-            var cementBags = cementVolume / 0.035;
-            var sand = dryVolume * ratio[1] / totalParts;
-            var aggregate = dryVolume * ratio[2] / totalParts;
-
-            document.getElementById('concrete-cement').textContent = Math.ceil(cementBags) + ' bags';
-            document.getElementById('concrete-sand').textContent = sand.toFixed(2) + ' m³';
-            document.getElementById('concrete-aggregate').textContent = aggregate.toFixed(2) + ' m³';
-            document.getElementById('concrete-results').style.display = 'block';
-        }
     </script>
 
     <footer class="site-footer">
