@@ -406,14 +406,14 @@
     </style>
 </head>
 <body>
-    <div class="tabs">
-        <button class="tab-button active" onclick="openTab(event, 'home')">Home</button>
-        <button class="tab-button" onclick="openTab(event, 'projects')">Projects</button>
-        <button class="tab-button" onclick="openTab(event, 'photos')">Photos</button>
-        <button class="tab-button" onclick="openTab(event, 'certifications')">Certifications</button>
-        <button class="tab-button" onclick="openTab(event, 'tech-blog')">Tech Blog</button>
-        <button class="tab-button" onclick="openTab(event, 'resources')">Resources</button>
-        <button class="tab-button" onclick="openTab(event, 'about')">About</button>
+    <div class="tabs" role="tablist" aria-label="Main navigation">
+        <button class="tab-button active" type="button" data-tab="home" aria-controls="home" aria-selected="true" onclick="openTab(event, 'home')">Home</button>
+        <button class="tab-button" type="button" data-tab="projects" aria-controls="projects" aria-selected="false" onclick="openTab(event, 'projects')">Projects</button>
+        <button class="tab-button" type="button" data-tab="photos" aria-controls="photos" aria-selected="false" onclick="openTab(event, 'photos')">Photos</button>
+        <button class="tab-button" type="button" data-tab="certifications" aria-controls="certifications" aria-selected="false" onclick="openTab(event, 'certifications')">Certifications</button>
+        <button class="tab-button" type="button" data-tab="tech-blog" aria-controls="tech-blog" aria-selected="false" onclick="openTab(event, 'tech-blog')">Tech Blog</button>
+        <button class="tab-button" type="button" data-tab="resources" aria-controls="resources" aria-selected="false" onclick="openTab(event, 'resources')">Resources</button>
+        <button class="tab-button" type="button" data-tab="about" aria-controls="about" aria-selected="false" onclick="openTab(event, 'about')">About</button>
     </div>
 
     <div id="home" class="tab-content active">
