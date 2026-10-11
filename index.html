@@ -194,10 +194,17 @@
         .certification-card img {
             display: block;
             width: 100%;
-            height: 260px;
-            object-fit: cover;
+            height: auto;
+            max-height: 80vh;
+            object-fit: contain;
             border-bottom: 1px solid var(--border);
-            background: #dfeaf3;
+            background: #edf5fb;
+            padding: 18px;
+        }
+
+        .certification-featured {
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .certification-info {
@@ -541,25 +548,7 @@
 
     <div id="certifications" class="tab-content">
         <h2>Certifications</h2>
-        <div class="certification-grid">
-            <article class="certification-card">
-                <img src="certificates/WhatsApp Image 2026-10-11 at 10.21.43 PM.jpeg" alt="Certificate of practical training and internship in civil engineering">
-                <div class="certification-info">
-                    <h3>Practical Training Certificate</h3>
-                    <p><strong>Issued by:</strong> Office of the Assistant Engineer / Local Engineering Department</p>
-                    <p><strong>Focus:</strong> Civil engineering practical exposure, site learning, and field experience.</p>
-                    <p><strong>Year:</strong> 2025</p>
-                </div>
-            </article>
-
-            <article class="certification-card">
-                <div class="certification-info" style="padding: 22px; min-height: 100%; display:flex; flex-direction:column; justify-content:center;">
-                    <h3>Professional Growth</h3>
-                    <p><strong>Areas covered:</strong> Construction planning, material quality checks, project awareness, and engineering discipline.</p>
-                    <p><strong>Goal:</strong> Continue developing skills in civil engineering, estimation, and practical site execution.</p>
-                </div>
-            </article>
-        </div>
+        <div class="certification-grid" id="certificatesGrid"></div>
     </div>
 
     <div id="tech-blog" class="tab-content">
@@ -644,6 +633,62 @@
             document.getElementById('civResLabour').innerText = '₹' + Math.round(labour).toLocaleString('en-IN');
             document.getElementById('civResTotal').innerText = '₹' + Math.round(totalCost).toLocaleString('en-IN');
             document.getElementById('civResultsBox').style.display = 'block';
+        }
+
+        var certificates = [
+            {
+                src: 'certificates/WhatsApp Image 2026-10-11 at 10.21.43 PM.jpeg',
+                title: 'Practical Training Certificate',
+                details: 'Civil engineering practical exposure and site learning.'
+            },
+            {
+                src: 'certificates/WhatsApp Image 2026-10-11 at 10.22.50 PM.jpeg',
+                title: 'Field Experience Certificate',
+                details: 'Engineering internship and professional work exposure.'
+            },
+            {
+                src: 'certificates/WhatsApp Image 2026-10-11 at 10.23.13 PM.jpeg',
+                title: 'AI Skills Passport',
+                details: 'Microsoft course completion certificate.'
+            },
+            {
+                src: 'certificates/WhatsApp Image 2026-10-11 at 10.23.13 PM (1).jpeg',
+                title: 'Impactful Writing Skills',
+                details: 'Wadhwani Foundation course completion certificate.'
+            },
+            {
+                src: 'certificates/WhatsApp Image 2026-10-11 at 10.23.13 PM (2).jpeg',
+                title: 'Self-Presentation',
+                details: 'Professional communication and personal presentation training.'
+            },
+            {
+                src: 'certificates/WhatsApp Image 2026-10-11 at 10.23.13 PM (3).jpeg',
+                title: 'Self-Management',
+                details: 'Skill development certificate for personal and professional growth.'
+            },
+            {
+                src: 'certificates/WhatsApp Image 2026-10-11 at 10.23.13 PM (4).jpeg',
+                title: 'Wadhwani Certificate',
+                details: 'Additional learning milestone in career development.'
+            },
+            {
+                src: 'certificates/WhatsApp Image 2026-10-11 at 10.23.13 PM (5).jpeg',
+                title: 'Learning Completion Certificate',
+                details: 'Another recognized course completion from the learning program.'
+            }
+        ];
+
+        var certificatesGrid = document.getElementById('certificatesGrid');
+        if (certificatesGrid) {
+            certificatesGrid.innerHTML = certificates.map(function (certificate) {
+                return '<article class="certification-card">' +
+                    '<img src="' + certificate.src + '" alt="' + certificate.title + '">' +
+                    '<div class="certification-info">' +
+                        '<h3>' + certificate.title + '</h3>' +
+                        '<p>' + certificate.details + '</p>' +
+                    '</div>' +
+                '</article>';
+            }).join('');
         }
 
     </script>
