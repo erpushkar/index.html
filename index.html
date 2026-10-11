@@ -57,9 +57,42 @@
             transition: color .2s ease, opacity .2s ease;
         }
         a:hover { text-decoration: underline; color: #fff2be; }
-        .tabs {
+        .top-notice {
             position: sticky;
             top: 0;
+            z-index: 25;
+            overflow: hidden;
+            background: linear-gradient(90deg, #f59e0b, #fbbf24, #f97316);
+            color: #0f172a;
+            font-weight: 800;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            box-shadow: 0 10px 25px rgba(245,158,11,.22);
+            display: block;
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .top-notice-inner {
+            display: flex;
+            align-items: center;
+            width: max-content;
+            min-width: 100%;
+            padding: 10px 0;
+            animation: marquee 18s linear infinite;
+        }
+
+        .top-notice-inner span {
+            display: inline-flex;
+            align-items: center;
+            gap: 2rem;
+            white-space: nowrap;
+            padding-right: 2rem;
+        }
+
+        .tabs {
+            position: sticky;
+            top: 42px;
             z-index: 20;
             display: flex;
             flex-wrap: wrap;
@@ -215,50 +248,99 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
+            align-items: center;
             gap: 14px;
-            margin-top: 24px;
+            margin-top: 28px;
         }
 
         .primary-btn, .secondary-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 12px 22px;
+            min-width: 180px;
+            min-height: 48px;
+            padding: 13px 24px;
             border-radius: 999px;
             font-weight: 700;
             font-size: .95rem;
-            transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+            line-height: 1.2;
+            transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, filter .2s ease;
             text-decoration: none;
             cursor: pointer;
             font-family: inherit;
+            border: 1px solid rgba(255,255,255,.08);
+            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.22);
         }
 
         button.primary-btn, button.secondary-btn {
-            border: none;
             appearance: none;
         }
 
         .primary-btn {
             background: linear-gradient(135deg, var(--primary), var(--accent-strong));
             color: #091522;
-            box-shadow: 0 10px 24px rgba(139,92,246,.24);
         }
 
         .secondary-btn {
-            border: 1px solid rgba(196,181,253,.32);
-            background: rgba(255,255,255,.02);
+            background: linear-gradient(135deg, rgba(125,211,252,.16), rgba(139,92,246,.18));
             color: var(--ink);
+            border-color: rgba(125,211,252,.30);
         }
 
         .primary-btn:hover, .secondary-btn:hover {
             transform: translateY(-2px);
             text-decoration: none;
+            filter: brightness(1.04);
         }
 
         .content-grid article:hover {
             transform: translateY(-4px);
             box-shadow: 0 18px 34px rgba(76,201,240,.16);
             border-color: rgba(76,201,240,.55);
+        }
+
+        .inline-message {
+            display: none;
+            margin-top: 12px;
+            padding: 10px 12px;
+            border-radius: 10px;
+            background: rgba(239, 68, 68, 0.08);
+            color: #ffd1d1;
+            border: 1px solid rgba(239, 68, 68, 0.28);
+            font-size: 0.92rem;
+        }
+
+        .inline-message.show {
+            display: block;
+        }
+
+        .social-link {
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.6);
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            border-color: #fff;
+            background-color: rgba(255,255,255,0.1);
+            text-decoration: none;
+        }
+
+        .footer-link {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+        }
+
+        .footer-link:hover {
+            color: #fff;
+            text-decoration: none;
         }
 
         .certification-grid {
@@ -569,6 +651,10 @@
         @keyframes tabReveal { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes heroReveal { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes civFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
 
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
@@ -592,6 +678,15 @@
     </style>
 </head>
 <body>
+    <div class="top-notice" aria-live="polite">
+        <div class="top-notice-inner">
+            <span>Under Construction • Managed by Pushkar</span>
+            <span>Under Construction • Managed by Pushkar</span>
+            <span>Under Construction • Managed by Pushkar</span>
+            <span>Under Construction • Managed by Pushkar</span>
+        </div>
+    </div>
+
     <div class="tabs" role="tablist" aria-label="Main navigation">
         <button class="tab-button active" type="button" data-tab="home" aria-controls="home" aria-selected="true" onclick="openTab(event, 'home')">Home</button>
         <button class="tab-button" type="button" data-tab="projects" aria-controls="projects" aria-selected="false" onclick="openTab(event, 'projects')">Projects</button>
@@ -699,6 +794,7 @@
                         </div>
 
                         <button type="button" class="civ-calc-btn" onclick="civCalculateCost()">Calculate Estimate</button>
+                        <p id="civErrorMessage" class="inline-message" aria-live="polite"></p>
                     </div>
 
                     <div class="civ-estimator-card civ-results-box" id="civResultsBox">
@@ -754,7 +850,10 @@
 
     <script>
         function openTab(evt, tabName) {
-            var tabTarget = tabName || (evt && evt.currentTarget ? evt.currentTarget.getAttribute('onclick').match(/'([^']+)'/)[1] : null);
+            var tabTarget = tabName;
+            if (!tabTarget && evt && evt.currentTarget) {
+                tabTarget = evt.currentTarget.getAttribute('data-tab');
+            }
             if (!tabTarget) return;
 
             var contents = document.getElementsByClassName('tab-content');
@@ -766,6 +865,7 @@
             var buttons = document.getElementsByClassName('tab-button');
             for (var i = 0; i < buttons.length; i++) {
                 buttons[i].classList.remove('active');
+                buttons[i].setAttribute('aria-selected', 'false');
             }
 
             var target = document.getElementById(tabTarget);
@@ -776,6 +876,7 @@
 
             if (evt && evt.currentTarget) {
                 evt.currentTarget.classList.add('active');
+                evt.currentTarget.setAttribute('aria-selected', 'true');
             }
         }
 
@@ -783,11 +884,17 @@
             var areaInput = document.getElementById('civ-area').value;
             var area = parseFloat(areaInput);
             var ratePerSqFt = parseFloat(document.getElementById('civ-quality').value);
+            var errorBox = document.getElementById('civErrorMessage');
 
             if (!area || area <= 0) {
-                alert('Please enter a valid built-up area (Sq. Ft.) to calculate cost.');
+                errorBox.textContent = 'Please enter a valid built-up area (Sq. Ft.) to calculate cost.';
+                errorBox.classList.add('show');
+                document.getElementById('civResultsBox').style.display = 'none';
                 return;
             }
+
+            errorBox.textContent = '';
+            errorBox.classList.remove('show');
 
             var totalCost = area * ratePerSqFt;
             var cement = totalCost * 0.164;
@@ -889,27 +996,27 @@
         <div style="background-color:#121212; color:#fff; padding:40px 20px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; min-height:120px;">
             <div style="display:flex; flex-wrap:wrap; align-items:center; gap:15px; margin-bottom:25px;">
                 <span style="font-size:16px; font-weight:500; letter-spacing:0.5px;">Follow Us</span>
-                <a href="https://www.linkedin.com/in/er-pushkarshukla?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" style="color:#fff; border:1px solid rgba(255,255,255,0.6); border-radius:50%; width:36px; height:36px; display:inline-flex; align-items:center; justify-content:center; text-decoration:none; transition:all 0.3s;" onmouseover="this.style.borderColor='#fff'; this.style.backgroundColor='rgba(255,255,255,0.1)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.6)'; this.style.backgroundColor='transparent'">
+                <a class="social-link" href="https://www.linkedin.com/in/er-pushkarshukla?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                 </a>
-                <a href="https://youtube.com/@pushkarshukla" target="_blank" rel="noopener noreferrer" style="color:#fff; border:1px solid rgba(255,255,255,0.6); border-radius:50%; width:36px; height:36px; display:inline-flex; align-items:center; justify-content:center; text-decoration:none; transition:all 0.3s;" onmouseover="this.style.borderColor='#fff'; this.style.backgroundColor='rgba(255,255,255,0.1)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.6)'; this.style.backgroundColor='transparent'">
+                <a class="social-link" href="https://youtube.com/@pushkarshukla" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.376.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.376-.505a3.016 3.016 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                 </a>
-                <a href="https://x.com" target="_blank" rel="noopener noreferrer" style="color:#fff; border:1px solid rgba(255,255,255,0.6); border-radius:50%; width:36px; height:36px; display:inline-flex; align-items:center; justify-content:center; text-decoration:none; transition:all 0.3s;" onmouseover="this.style.borderColor='#fff'; this.style.backgroundColor='rgba(255,255,255,0.1)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.6)'; this.style.backgroundColor='transparent'">
+                <a class="social-link" href="https://x.com" target="_blank" rel="noopener noreferrer" aria-label="X">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                 </a>
-                <a href="https://www.instagram.com/pushkarshukla01" target="_blank" rel="noopener noreferrer" style="color:#fff; border:1px solid rgba(255,255,255,0.6); border-radius:50%; width:36px; height:36px; display:inline-flex; align-items:center; justify-content:center; text-decoration:none; transition:all 0.3s;" onmouseover="this.style.borderColor='#fff'; this.style.backgroundColor='rgba(255,255,255,0.1)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.6)'; this.style.backgroundColor='transparent'">
+                <a class="social-link" href="https://www.instagram.com/pushkarshukla01" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                 </a>
-                <a href="https://github.com/erpushkar" target="_blank" rel="noopener noreferrer" style="color:#fff; border:1px solid rgba(255,255,255,0.6); border-radius:50%; width:36px; height:36px; display:inline-flex; align-items:center; justify-content:center; text-decoration:none; transition:all 0.3s;" onmouseover="this.style.borderColor='#fff'; this.style.backgroundColor='rgba(255,255,255,0.1)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.6)'; this.style.backgroundColor='transparent'">
+                <a class="social-link" href="https://github.com/erpushkar" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
                 </a>
             </div>
 
             <div style="font-size:14px; margin-bottom:25px; color:rgba(255,255,255,0.7); display:flex; align-items:center; justify-content:center; gap:12px;">
-                <a href="#" style="color:rgba(255,255,255,0.7); text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Copyright & Terms</a>
+                <a class="footer-link" href="#">Copyright & Terms</a>
                 <span style="color:rgba(255,255,255,0.4);">|</span>
-                <a href="#" style="color:rgba(255,255,255,0.7); text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Privacy Policy</a>
+                <a class="footer-link" href="#">Privacy Policy</a>
             </div>
 
             <div style="font-size:13px; color:rgba(255,255,255,0.5); letter-spacing:0.3px;">&copy; 2027 PUSHKAR SHUKLA. All rights reserved.</div>
