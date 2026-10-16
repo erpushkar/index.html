@@ -414,15 +414,6 @@
             padding: 18px;
         }
 
-        .certification-card iframe {
-            display: block;
-            width: 100%;
-            height: min(70vh, 600px);
-            border: 0;
-            border-bottom: 1px solid var(--border);
-            background: #edf5fb;
-        }
-
         .certification-featured {
             max-width: 900px;
             margin: 0 auto;
@@ -942,27 +933,30 @@
             }
             if (!tabTarget) return;
 
+            var target = document.getElementById(tabTarget);
+            if (!target || !target.classList.contains('tab-content')) return;
+
             var contents = document.getElementsByClassName('tab-content');
             for (var i = 0; i < contents.length; i++) {
                 contents[i].classList.remove('active');
                 contents[i].style.display = 'none';
             }
 
-            var buttons = document.getElementsByClassName('tab-button');
+            var buttons = document.querySelectorAll('.tabs .tab-button');
             for (var i = 0; i < buttons.length; i++) {
                 buttons[i].classList.remove('active');
                 buttons[i].setAttribute('aria-selected', 'false');
             }
 
-            var target = document.getElementById(tabTarget);
-            if (target) {
-                target.classList.add('active');
-                target.style.display = 'block';
-            }
+            target.classList.add('active');
+            target.style.display = 'block';
 
-            if (evt && evt.currentTarget) {
-                evt.currentTarget.classList.add('active');
-                evt.currentTarget.setAttribute('aria-selected', 'true');
+            for (var j = 0; j < buttons.length; j++) {
+                if (buttons[j].getAttribute('data-tab') === tabTarget) {
+                    buttons[j].classList.add('active');
+                    buttons[j].setAttribute('aria-selected', 'true');
+                    break;
+                }
             }
         }
 
@@ -972,8 +966,16 @@
             var ratePerSqFt = parseFloat(document.getElementById('civ-quality').value);
             var errorBox = document.getElementById('civErrorMessage');
 
-            if (!area || area <= 0) {
+            if (!Number.isFinite(area) || area <= 0) {
                 errorBox.textContent = 'Please enter a valid built-up area (Sq. Ft.) to calculate cost.';
+                errorBox.classList.add('show');
+                document.getElementById('civResultsBox').style.display = 'none';
+                return;
+            }
+
+            var totalCost = area * ratePerSqFt;
+            if (!Number.isFinite(totalCost)) {
+                errorBox.textContent = 'The estimate is too large to calculate. Please enter a smaller area.';
                 errorBox.classList.add('show');
                 document.getElementById('civResultsBox').style.display = 'none';
                 return;
@@ -982,7 +984,6 @@
             errorBox.textContent = '';
             errorBox.classList.remove('show');
 
-            var totalCost = area * ratePerSqFt;
             var cement = totalCost * 0.164;
             var steel = totalCost * 0.246;
             var sand = totalCost * 0.123;
@@ -1058,11 +1059,10 @@
                 details: 'Another recognized course completion from the learning program.'
             },
             {
-                src: 'certificates/Wadhwani Foundation Certificate.pdf',
-                title: 'Wadhwani Foundation Certificate',
-                details: 'Certificate issued by Wadhwani Foundation.',
-                date: new Date(2026, 9, 16, 17, 52, 41),
-                isPdf: true
+                src: 'certificates/Wadhwani Foundation - Problem Solving and Innovation (Hindi).jpeg',
+                title: 'Problem Solving & Innovation (Hindi)',
+                details: '75-hour microcertificate of completion from Wadhwani Foundation.',
+                date: new Date(2026, 9, 16)
             }
         ];
 
@@ -1074,15 +1074,10 @@
         if (certificatesGrid) {
             certificatesGrid.innerHTML = certificates.map(function (certificate) {
                 return '<article class="certification-card">' +
-                    (certificate.isPdf
-                        ? '<iframe src="' + certificate.src + '" title="' + certificate.title + '"></iframe>'
-                        : '<img src="' + certificate.src + '" alt="' + certificate.title + '">') +
+                    '<img src="' + certificate.src + '" alt="' + certificate.title + '">' +
                     '<div class="certification-info">' +
                         '<h3>' + certificate.title + '</h3>' +
                         '<p>' + certificate.details + '</p>' +
-                        (certificate.isPdf
-                            ? '<p><a href="' + certificate.src + '" target="_blank" rel="noopener noreferrer">Open or download certificate</a></p>'
-                            : '') +
                     '</div>' +
                 '</article>';
             }).join('');
