@@ -414,6 +414,15 @@
             padding: 18px;
         }
 
+        .certification-card iframe {
+            display: block;
+            width: 100%;
+            height: min(70vh, 600px);
+            border: 0;
+            border-bottom: 1px solid var(--border);
+            background: #edf5fb;
+        }
+
         .certification-featured {
             max-width: 900px;
             margin: 0 auto;
@@ -1047,21 +1056,33 @@
                 src: 'certificates/WhatsApp Image 2026-10-11 at 10.23.13 PM (5).jpeg',
                 title: 'Learning Completion Certificate',
                 details: 'Another recognized course completion from the learning program.'
+            },
+            {
+                src: 'certificates/Wadhwani Foundation Certificate.pdf',
+                title: 'Wadhwani Foundation Certificate',
+                details: 'Certificate issued by Wadhwani Foundation.',
+                date: new Date(2026, 9, 16, 17, 52, 41),
+                isPdf: true
             }
         ];
 
         certificates.sort(function (a, b) {
-            return parseCertificateDate(a.src) - parseCertificateDate(b.src);
+            return (a.date || parseCertificateDate(a.src)) - (b.date || parseCertificateDate(b.src));
         });
 
         var certificatesGrid = document.getElementById('certificatesGrid');
         if (certificatesGrid) {
             certificatesGrid.innerHTML = certificates.map(function (certificate) {
                 return '<article class="certification-card">' +
-                    '<img src="' + certificate.src + '" alt="' + certificate.title + '">' +
+                    (certificate.isPdf
+                        ? '<iframe src="' + certificate.src + '" title="' + certificate.title + '"></iframe>'
+                        : '<img src="' + certificate.src + '" alt="' + certificate.title + '">') +
                     '<div class="certification-info">' +
                         '<h3>' + certificate.title + '</h3>' +
                         '<p>' + certificate.details + '</p>' +
+                        (certificate.isPdf
+                            ? '<p><a href="' + certificate.src + '" target="_blank" rel="noopener noreferrer">Open or download certificate</a></p>'
+                            : '') +
                     '</div>' +
                 '</article>';
             }).join('');
