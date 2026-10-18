@@ -144,37 +144,6 @@
             backdrop-filter: blur(8px);
         }
 
-        .section-kicker {
-            display: inline-block;
-            padding: 7px 14px;
-            margin-bottom: 18px;
-            background: rgba(242,138,87,.1);
-            color: var(--primary);
-            border: 1px solid rgba(242,138,87,.23);
-            border-radius: 999px;
-            font-size: .76rem;
-            letter-spacing: .12em;
-            text-transform: uppercase;
-            font-weight: 700;
-        }
-
-        .content-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 18px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .content-grid article {
-            padding: 22px;
-            background: linear-gradient(180deg, rgba(32,40,36,.92), rgba(22,29,26,.98));
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            box-shadow: 0 12px 24px rgba(2,6,23,.12);
-            transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-        }
-
         .stat-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -258,12 +227,6 @@
             box-shadow: 0 16px 30px rgba(210,99,56,.2);
         }
 
-        .content-grid article:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 18px 34px rgba(0,0,0,.28);
-            border-color: rgba(242,138,87,.48);
-        }
-
         #resources .construction-guide {
             max-width: 1000px;
             margin: 0 auto;
@@ -305,39 +268,6 @@
         #resources .guide-stage li {
             padding: 3px 0;
             line-height: 1.65;
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 16px;
-            margin-top: 26px;
-        }
-
-        .feature-card {
-            padding: 18px 16px;
-            border-radius: 16px;
-            background: linear-gradient(180deg, rgba(40,49,44,.9), rgba(24,31,28,.96));
-            border: 1px solid rgba(229,197,140,.16);
-            box-shadow: inset 0 1px 0 rgba(255,255,255,.03);
-            transition: transform .25s ease, border-color .25s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-3px);
-            border-color: rgba(242,138,87,.42);
-        }
-
-        .feature-card h3 {
-            margin: 0 0 8px;
-            font-size: 1.02rem;
-            color: var(--heading);
-        }
-
-        .feature-card p {
-            margin: 0;
-            color: var(--muted);
-            font-size: 0.92rem;
         }
 
         .inline-message {
@@ -494,7 +424,7 @@
             color: var(--muted);
         }
 
-        .content-grid h3, .content-card h2 {
+        .content-card h2 {
             margin-top: 0;
             color: var(--primary);
         }
