@@ -11,23 +11,12 @@
             --primary: #f28a57;
             --primary-deep: #d56338;
             --accent: #e5c58c;
-            --accent-strong: #b9754f;
             --ink: #f4f0e8;
             --muted: #b8c0b9;
-            --bg: #101514;
-            --bg-strong: #171d1b;
-            --panel: #1b2421;
-            --panel-soft: #26312c;
-            --panel-alt: #202824;
-            --surface: rgba(27, 36, 33, 0.88);
-            --surface-strong: rgba(14, 20, 18, 0.96);
             --border: rgba(229, 197, 140, 0.2);
-            --shadow: rgba(0, 0, 0, 0.38);
             --soft-shadow: rgba(0, 0, 0, 0.24);
             --heading: #fffaf0;
             --link: #f0b68f;
-            --gold: #e5c58c;
-            --success: #a9cfad;
         }
 
         /* Base styles keep layouts predictable and prevent horizontal overflow. */
@@ -59,34 +48,7 @@
             transition: color .2s ease, opacity .2s ease;
         }
         a:hover { text-decoration: underline; color: #fff2be; }
-        /* Top banner and sticky tab navigation. */
-        .top-notice {
-            overflow: hidden;
-            background: #d9774d;
-            color: #1b1713;
-            font-weight: 750;
-            letter-spacing: .12em;
-            text-transform: uppercase;
-        }
-
-        .top-notice-inner {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            min-width: 0;
-            padding: 8px 16px;
-        }
-
-        .top-notice-inner span {
-            display: inline-flex;
-            align-items: center;
-            gap: .65rem;
-            font-size: .69rem;
-            white-space: nowrap;
-            padding-right: 0;
-        }
-
+        /* Sticky tab navigation. */
         .tabs {
             position: sticky;
             top: 0;
@@ -374,12 +336,72 @@
             text-decoration: none;
         }
 
+        .footer-link-button {
+            padding: 0;
+            border: 0;
+            background: none;
+            font: inherit;
+            cursor: pointer;
+        }
+
         .footer-link:hover {
             color: #fff;
             text-decoration: none;
         }
 
-        /* Image galleries for certificates and project photos. */
+        .terms-dialog {
+            width: min(620px, calc(100% - 32px));
+            max-height: min(80vh, 700px);
+            padding: 28px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: linear-gradient(180deg, #202824, #141a17);
+            color: var(--ink);
+            box-shadow: 0 24px 70px rgba(0,0,0,.55);
+        }
+
+        .terms-dialog::backdrop {
+            background: rgba(0,0,0,.72);
+            backdrop-filter: blur(4px);
+        }
+
+        .terms-dialog-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .terms-dialog h2 {
+            margin: 0;
+            color: var(--heading);
+            font-size: 1.5rem;
+        }
+
+        .terms-dialog h3 {
+            margin: 20px 0 6px;
+            color: var(--primary);
+            font-size: 1rem;
+        }
+
+        .terms-dialog p {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        .terms-dialog-close {
+            flex: 0 0 auto;
+            padding: 6px 10px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: rgba(255,255,255,.04);
+            color: var(--ink);
+            font: inherit;
+            cursor: pointer;
+        }
+
+        /* Certificate gallery. */
         .certification-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -414,52 +436,8 @@
             padding: 18px;
         }
 
-        .certification-featured {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
         .certification-info {
             padding: 18px 18px 20px;
-        }
-
-        .photo-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 20px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .photo-card {
-            margin: 0;
-            background: linear-gradient(180deg, rgba(32,40,36,.96), rgba(22,29,26,.98));
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            overflow: hidden;
-            box-shadow: 0 18px 36px rgba(2,6,23,.14);
-            transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-        }
-
-        .photo-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0,0,0,.3);
-            border-color: rgba(242,138,87,.5);
-        }
-
-        .photo-card img {
-            display: block;
-            width: 100%;
-            height: 290px;
-            object-fit: cover;
-            background: #dfeaf3;
-        }
-
-        .photo-card figcaption {
-            padding: 14px 16px 18px;
-            color: var(--muted);
-            font-size: .95rem;
-            border-top: 1px solid var(--border);
         }
 
         .certification-info h3 {
@@ -660,6 +638,25 @@
             outline: none;
         }
 
+        .unit-converter-controls {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .unit-converter-result {
+            min-height: 64px;
+            margin: 18px 0 0;
+            padding: 18px;
+            border-left: 4px solid var(--primary);
+            border-radius: 8px;
+            background: rgba(20,27,24,.8);
+            color: var(--heading);
+            font-size: 1.15rem;
+            font-weight: 700;
+            overflow-wrap: anywhere;
+        }
+
         .civ-calc-btn {
             width: 100%;
             background: linear-gradient(135deg, var(--primary), var(--primary-deep));
@@ -727,33 +724,6 @@
             line-height: 1.4;
         }
 
-        .concrete-calculator-card { max-width: 650px; }
-        .concrete-results {
-            display: none;
-            margin-top: 24px;
-            padding: 20px;
-            background: linear-gradient(180deg, rgba(32,40,36,.96), rgba(22,29,26,.98));
-            border-left: 4px solid var(--primary);
-            border-radius: 10px;
-            color: #f3f0e6;
-            border: 1px solid var(--border);
-        }
-
-        .concrete-results h3 { margin-top: 0; color: var(--primary); }
-        .concrete-results p {
-            display: flex;
-            justify-content: space-between;
-            gap: 12px;
-            margin: 10px 0;
-        }
-        .concrete-results small, .grade-note { color: var(--muted); }
-        .grade-note {
-            display: block;
-            margin-top: 8px;
-            font-size: 12px;
-            line-height: 1.4;
-        }
-
         .site-footer {
             background: linear-gradient(180deg, #0d1218, #090c10);
             color: #ffffff;
@@ -800,26 +770,20 @@
             .civ-estimator-section { padding: 30px 12px; }
             .civ-estimator-card { min-width: 0; width: 100%; padding: 20px; }
             .civ-estimator-header h2 { font-size: 23px; }
+            .unit-converter-controls { grid-template-columns: 1fr; gap: 0; }
             .civ-total-row, .civ-result-item { gap: 12px; }
             .civ-result-item span:first-child { overflow-wrap: anywhere; }
         }
     </style>
 </head>
 <body>
-    <!-- Short introduction banner. -->
-    <div class="top-notice" aria-live="polite">
-        <div class="top-notice-inner">
-            <span>Civil engineering &middot; Construction &middot; Project estimation</span>
-        </div>
-    </div>
-
     <!-- Main navigation; each button opens its matching content panel. -->
     <div class="tabs" role="tablist" aria-label="Main navigation">
         <button class="tab-button active" type="button" data-tab="home" aria-controls="home" aria-selected="true" onclick="openTab(event, 'home')">Home</button>
         <button class="tab-button" type="button" data-tab="projects" aria-controls="projects" aria-selected="false" onclick="openTab(event, 'projects')">Projects</button>
-        <button class="tab-button" type="button" data-tab="photos" aria-controls="photos" aria-selected="false" onclick="openTab(event, 'photos')">Photos</button>
         <button class="tab-button" type="button" data-tab="certifications" aria-controls="certifications" aria-selected="false" onclick="openTab(event, 'certifications')">Certifications</button>
         <button class="tab-button" type="button" data-tab="tech-blog" aria-controls="tech-blog" aria-selected="false" onclick="openTab(event, 'tech-blog')">Tech Blog</button>
+        <button class="tab-button" type="button" data-tab="digital-tools" aria-controls="digital-tools" aria-selected="false" onclick="openTab(event, 'digital-tools')">Digital Tools</button>
         <button class="tab-button" type="button" data-tab="resources" aria-controls="resources" aria-selected="false" onclick="openTab(event, 'resources')">Resources</button>
         <button class="tab-button" type="button" data-tab="about" aria-controls="about" aria-selected="false" onclick="openTab(event, 'about')">About</button>
     </div>
@@ -874,7 +838,6 @@
                 </div>
             </div>
 
-            <p style="margin-top: 22px;"><strong>Email: <a href="mailto:er.pushkarshukla@gmail.com">er.pushkarshukla@gmail.com</a></strong></p>
         </div>
     </div>
 
@@ -892,29 +855,6 @@
         </div>
     </div>
 
-    <!-- Project and construction-site photo gallery. -->
-    <div id="photos" class="tab-content">
-        <h2>Photos</h2>
-        <div class="photo-grid">
-            <figure class="photo-card">
-                <img src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=900&q=80" alt="AI-generated modern architecture concept">
-                <figcaption>AI Concept: Modern Residential Cluster</figcaption>
-            </figure>
-            <figure class="photo-card">
-                <img src="infrastructure.jpg" alt="Construction workers installing reinforcement steel on an active site" loading="lazy">
-                <figcaption>On site: reinforcement and construction work</figcaption>
-            </figure>
-            <figure class="photo-card">
-                <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=80" alt="AI-generated city skyline concept">
-                <figcaption>AI Concept: Urban Skyline Planning</figcaption>
-            </figure>
-            <figure class="photo-card">
-                <img src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&w=900&q=80" alt="AI-generated building site concept art">
-                <figcaption>AI Concept: Smart Building Development</figcaption>
-            </figure>
-        </div>
-    </div>
-
     <!-- Interactive building-cost estimator. -->
     <div id="construction-cost-estimator" class="tab-content">
         <section class="civ-estimator-section">
@@ -925,7 +865,7 @@
                 </div>
 
                 <div class="civ-estimator-grid">
-                    <div class="civ-estimator-card civ-form-box">
+                    <div class="civ-estimator-card">
                         <div class="civ-input-group">
                             <label for="civ-area">Total Built-up Area (Sq. Ft.)</label>
                             <input type="number" id="civ-area" placeholder="e.g. 1200" min="1">
@@ -994,6 +934,45 @@
         </div>
     </div>
 
+    <!-- Interactive civil engineering unit converter. -->
+    <div id="digital-tools" class="tab-content">
+        <h2>Digital Tools</h2>
+        <section class="civ-estimator-section" aria-labelledby="unit-converter-title">
+            <div class="civ-estimator-container">
+                <div class="civ-estimator-header">
+                    <h2 id="unit-converter-title">Engineering Unit Converter</h2>
+                    <p>Convert common length, area, and volume measurements.</p>
+                </div>
+                <div class="civ-estimator-card">
+                    <div class="unit-converter-controls">
+                        <div class="civ-input-group">
+                            <label for="unit-category">Measurement</label>
+                            <select id="unit-category" onchange="updateUnitOptions()">
+                                <option value="length">Length</option>
+                                <option value="area">Area</option>
+                                <option value="volume">Volume</option>
+                            </select>
+                        </div>
+                        <div class="civ-input-group">
+                            <label for="unit-value">Value</label>
+                            <input id="unit-value" type="number" min="0" step="any" value="1" oninput="convertUnits()">
+                        </div>
+                        <div class="civ-input-group">
+                            <label for="unit-from">From</label>
+                            <select id="unit-from" onchange="convertUnits()"></select>
+                        </div>
+                        <div class="civ-input-group">
+                            <label for="unit-to">To</label>
+                            <select id="unit-to" onchange="convertUnits()"></select>
+                        </div>
+                    </div>
+                    <button class="civ-calc-btn" type="button" onclick="convertUnits()">Convert</button>
+                    <p class="unit-converter-result" id="unit-result" aria-live="polite"></p>
+                </div>
+            </div>
+        </section>
+    </div>
+
     <!-- Quick-reference engineering resources and site checklists. -->
     <div id="resources" class="tab-content">
         <h2>Engineering Resources</h2>
@@ -1013,7 +992,7 @@
         <img src="my-photo.jpeg" alt="Pushkar" style="width:220px; height:auto; display:block; margin:0 auto 1.5rem; border-radius:15px; box-shadow:0 4px 15px rgba(0,0,0,.2);">
         <div class="content-card">
             <p>My name is <strong>Pushkar Shukla</strong>. I am from <strong>312-Shiv Sadan, Khirighat, Madwanagar, Basti, Uttar Pradesh, India (Pincode: 272002)</strong>.</p>
-            <p>I am a civil engineering enthusiast who enjoys learning about construction, estimating project costs, and exploring practical technology solutions. Through this website, I share my projects, photos, certifications, technical thoughts, and useful tools.</p>
+            <p>I am a civil engineering enthusiast who enjoys learning about construction, estimating project costs, and exploring practical technology solutions. Through this website, I share my projects, certifications, technical thoughts, and useful tools.</p>
             <p>My goal is to keep improving my skills, create meaningful work, and contribute positively to the engineering and technology community.</p>
         </div>
         <div class="content-card" style="text-align:center; margin-top:24px;">
@@ -1057,6 +1036,87 @@
                     break;
                 }
             }
+        }
+
+        var conversionUnits = {
+            length: [
+                { value: 'mm', label: 'Millimeter (mm)', factor: 0.001 },
+                { value: 'cm', label: 'Centimeter (cm)', factor: 0.01 },
+                { value: 'm', label: 'Meter (m)', factor: 1 },
+                { value: 'km', label: 'Kilometer (km)', factor: 1000 },
+                { value: 'in', label: 'Inch (in)', factor: 0.0254 },
+                { value: 'ft', label: 'Foot (ft)', factor: 0.3048 },
+                { value: 'yd', label: 'Yard (yd)', factor: 0.9144 }
+            ],
+            area: [
+                { value: 'cm2', label: 'Square centimeter (cm²)', factor: 0.0001 },
+                { value: 'm2', label: 'Square meter (m²)', factor: 1 },
+                { value: 'km2', label: 'Square kilometer (km²)', factor: 1000000 },
+                { value: 'ft2', label: 'Square foot (ft²)', factor: 0.09290304 },
+                { value: 'in2', label: 'Square inch (in²)', factor: 0.00064516 },
+                { value: 'acre', label: 'Acre', factor: 4046.8564224 },
+                { value: 'hectare', label: 'Hectare (ha)', factor: 10000 }
+            ],
+            volume: [
+                { value: 'ml', label: 'Milliliter (mL)', factor: 0.000001 },
+                { value: 'l', label: 'Liter (L)', factor: 0.001 },
+                { value: 'm3', label: 'Cubic meter (m³)', factor: 1 },
+                { value: 'ft3', label: 'Cubic foot (ft³)', factor: 0.028316846592 },
+                { value: 'yd3', label: 'Cubic yard (yd³)', factor: 0.764554857984 },
+                { value: 'gal', label: 'US gallon (gal)', factor: 0.003785411784 }
+            ]
+        };
+
+        function updateUnitOptions() {
+            var category = document.getElementById('unit-category').value;
+            var units = conversionUnits[category];
+            var defaultUnits = {
+                length: ['m', 'ft'],
+                area: ['m2', 'ft2'],
+                volume: ['m3', 'ft3']
+            }[category];
+            var fromSelect = document.getElementById('unit-from');
+            var toSelect = document.getElementById('unit-to');
+
+            fromSelect.innerHTML = '';
+            toSelect.innerHTML = '';
+            units.forEach(function (unit) {
+                var fromOption = document.createElement('option');
+                fromOption.value = unit.value;
+                fromOption.textContent = unit.label;
+                fromSelect.appendChild(fromOption);
+
+                var toOption = document.createElement('option');
+                toOption.value = unit.value;
+                toOption.textContent = unit.label;
+                toSelect.appendChild(toOption);
+            });
+
+            fromSelect.value = defaultUnits[0];
+            toSelect.value = defaultUnits[1];
+            convertUnits();
+        }
+
+        function convertUnits() {
+            var category = document.getElementById('unit-category').value;
+            var input = document.getElementById('unit-value');
+            var output = document.getElementById('unit-result');
+            var rawValue = input.value;
+            var value = Number(rawValue);
+
+            if (rawValue.trim() === '' || !Number.isFinite(value) || value < 0) {
+                output.textContent = 'Enter a valid non-negative value.';
+                return;
+            }
+
+            var units = conversionUnits[category];
+            var fromUnit = units.find(function (unit) { return unit.value === document.getElementById('unit-from').value; });
+            var toUnit = units.find(function (unit) { return unit.value === document.getElementById('unit-to').value; });
+            if (!fromUnit || !toUnit) return;
+
+            var converted = value * fromUnit.factor / toUnit.factor;
+            var formatted = Number(converted.toPrecision(8)).toLocaleString(undefined, { maximumSignificantDigits: 8 });
+            output.textContent = value + ' ' + fromUnit.value + ' = ' + formatted + ' ' + toUnit.value;
         }
 
         // Estimate total building cost and split it into approximate cost categories.
@@ -1187,6 +1247,8 @@
             }).join('');
         }
 
+        updateUnitOptions();
+
     </script>
 
     <!-- Social links, policy links, and copyright information. -->
@@ -1212,13 +1274,53 @@
             </div>
 
             <div style="font-size:14px; margin-bottom:25px; color:rgba(255,255,255,0.7); display:flex; align-items:center; justify-content:center; gap:12px;">
-                <a class="footer-link" href="#">Copyright & Terms</a>
+                <button class="footer-link footer-link-button" type="button" onclick="document.getElementById('copyrightTermsDialog').showModal()">Copyright &amp; Terms</button>
                 <span style="color:rgba(255,255,255,0.4);">|</span>
-                <a class="footer-link" href="#">Privacy Policy</a>
+                <button class="footer-link footer-link-button" type="button" onclick="document.getElementById('privacyPolicyDialog').showModal()">Privacy Policy</button>
             </div>
 
             <div style="font-size:13px; color:rgba(255,255,255,0.5); letter-spacing:0.3px;">&copy; 2027 PUSHKAR SHUKLA. All rights reserved.</div>
         </div>
     </footer>
+    <dialog class="terms-dialog" id="copyrightTermsDialog" aria-labelledby="copyrightTermsTitle">
+        <div class="terms-dialog-header">
+            <h2 id="copyrightTermsTitle">Copyright &amp; Terms</h2>
+            <form method="dialog">
+                <button class="terms-dialog-close" type="submit" aria-label="Close terms">Close</button>
+            </form>
+        </div>
+        <section>
+            <h3>Copyright</h3>
+            <p>Original portfolio text, design, and project descriptions belong to Pushkar Shukla unless otherwise credited. Certificates are displayed for portfolio purposes; third-party names, marks, and materials remain the property of their respective owners.</p>
+        </section>
+        <section>
+            <h3>Using this site</h3>
+            <p>Site content is provided for personal and educational reference. Please ask permission before republishing original content or using it commercially. External links and services are provided for convenience and are governed by their own terms.</p>
+        </section>
+        <section>
+            <h3>Cost estimator</h3>
+            <p>Estimator results are approximate, based on the values entered and the rates shown. Actual costs vary by location, design, materials, labor, and site conditions. Verify estimates with a qualified professional before making project or financial decisions.</p>
+        </section>
+    </dialog>
+    <dialog class="terms-dialog" id="privacyPolicyDialog" aria-labelledby="privacyPolicyTitle">
+        <div class="terms-dialog-header">
+            <h2 id="privacyPolicyTitle">Privacy Policy</h2>
+            <form method="dialog">
+                <button class="terms-dialog-close" type="submit" aria-label="Close privacy policy">Close</button>
+            </form>
+        </div>
+        <section>
+            <h3>Information on this site</h3>
+            <p>This portfolio has no account registration or contact form. The construction estimator runs in your browser using the values you enter; it does not send those values through this page.</p>
+        </section>
+        <section>
+            <h3>Contact and external services</h3>
+            <p>Using the email link opens your email application. Social media links and externally hosted content, such as images, may be provided by third parties and are subject to their own privacy policies.</p>
+        </section>
+        <section>
+            <h3>Hosting and updates</h3>
+            <p>The service that hosts this site may process basic technical information, such as connection logs, according to its own policies. This notice may be updated if the site's features or data practices change.</p>
+        </section>
+    </dialog>
 </body>
 </html>
