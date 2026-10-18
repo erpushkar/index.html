@@ -264,6 +264,49 @@
             border-color: rgba(242,138,87,.48);
         }
 
+        #resources .construction-guide {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        #resources .guide-intro {
+            margin: 0 0 18px;
+            color: var(--muted);
+        }
+
+        #resources .guide-stage {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        #resources .guide-stage h3 {
+            margin: 0 0 10px;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        #resources .guide-stage h4 {
+            margin: 16px 0 6px;
+            color: var(--heading);
+            font-size: 1rem;
+        }
+
+        #resources .guide-stage p {
+            margin: 0 0 10px;
+            color: var(--muted);
+        }
+
+        #resources .guide-stage ul {
+            margin: 6px 0 0;
+            padding-left: 22px;
+            color: var(--muted);
+        }
+
+        #resources .guide-stage li {
+            padding: 3px 0;
+            line-height: 1.65;
+        }
+
         .feature-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -657,6 +700,73 @@
             overflow-wrap: anywhere;
         }
 
+        .civil-calculator-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 24px auto 0;
+        }
+
+        .civil-calculator-card {
+            min-width: 0;
+            max-width: none;
+        }
+
+        .civil-calculator-card h3 {
+            margin: 0 0 8px;
+            color: var(--heading);
+            font-size: 1.2rem;
+        }
+
+        .civil-calculator-controls {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0 16px;
+        }
+
+        .calculator-note {
+            margin: 0 0 18px;
+            color: var(--muted);
+            font-size: .9rem;
+        }
+
+        .calculation-output {
+            margin-top: 18px;
+            padding: 16px;
+            border-left: 4px solid var(--primary);
+            border-radius: 8px;
+            background: rgba(20,27,24,.8);
+        }
+
+        .calculation-output[hidden] { display: none; }
+
+        .calculation-output dl {
+            display: grid;
+            gap: 9px;
+            margin: 0;
+        }
+
+        .calculation-output .result-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 14px;
+            color: var(--muted);
+        }
+
+        .calculation-output dd {
+            margin: 0;
+            color: var(--heading);
+            font-weight: 700;
+            text-align: right;
+        }
+
+        .calculation-assumption {
+            margin: 12px 0 0;
+            color: var(--muted);
+            font-size: .8rem;
+        }
+
         .civ-calc-btn {
             width: 100%;
             background: linear-gradient(135deg, var(--primary), var(--primary-deep));
@@ -771,6 +881,7 @@
             .civ-estimator-card { min-width: 0; width: 100%; padding: 20px; }
             .civ-estimator-header h2 { font-size: 23px; }
             .unit-converter-controls { grid-template-columns: 1fr; gap: 0; }
+            .civil-calculator-grid { grid-template-columns: 1fr; }
             .civ-total-row, .civ-result-item { gap: 12px; }
             .civ-result-item span:first-child { overflow-wrap: anywhere; }
         }
@@ -780,7 +891,6 @@
     <!-- Main navigation; each button opens its matching content panel. -->
     <div class="tabs" role="tablist" aria-label="Main navigation">
         <button class="tab-button active" type="button" data-tab="home" aria-controls="home" aria-selected="true" onclick="openTab(event, 'home')">Home</button>
-        <button class="tab-button" type="button" data-tab="projects" aria-controls="projects" aria-selected="false" onclick="openTab(event, 'projects')">Projects</button>
         <button class="tab-button" type="button" data-tab="certifications" aria-controls="certifications" aria-selected="false" onclick="openTab(event, 'certifications')">Certifications</button>
         <button class="tab-button" type="button" data-tab="tech-blog" aria-controls="tech-blog" aria-selected="false" onclick="openTab(event, 'tech-blog')">Tech Blog</button>
         <button class="tab-button" type="button" data-tab="digital-tools" aria-controls="digital-tools" aria-selected="false" onclick="openTab(event, 'digital-tools')">Digital Tools</button>
@@ -813,90 +923,11 @@
 
                 <div class="home-actions">
                     <button class="primary-btn" type="button" onclick="openTab(event, 'about')">Contact Me</button>
-                    <button class="secondary-btn" type="button" onclick="openTab(event, 'projects')">View Projects</button>
+                    <button class="secondary-btn" type="button" onclick="openTab(event, 'certifications')">Explore Certifications</button>
                 </div>
             </div>
         </section>
 
-        <div class="content-card" style="text-align:left; margin-top:24px;">
-            <p class="section-kicker" style="margin: 0 0 16px;">Professional Profile</p>
-            <h2 style="text-align:left; left:0; transform:none; margin: 0 0 12px;">Building with discipline, precision, and purpose.</h2>
-            <p>Focused on civil engineering, construction estimating, and practical digital solutions that support smarter project execution. I enjoy turning technical knowledge into useful, real-world outcomes for construction and infrastructure work.</p>
-
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <h3>Project Planning</h3>
-                    <p>Structured thinking for better execution, budgeting, and control.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Site Insight</h3>
-                    <p>Clear understanding of materials, safety, and practical field needs.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Digital Tools</h3>
-                    <p>Using software and systems to improve speed, accuracy, and quality.</p>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- Projects and featured work. -->
-    <div id="projects" class="tab-content">
-        <h2>Projects</h2>
-        <div class="content-grid">
-            <article>
-                <h3>Construction Cost Estimator</h3>
-                <p>Calculate approximate building construction costs and concrete material requirements for residential projects.</p>
-                <button class="tab-button" type="button" onclick="openTab(event, 'construction-cost-estimator')">Open Estimator</button>
-            </article>
-            <article><h3>Engineering Learning</h3><p>Notes and resources focused on civil engineering concepts and site practices.</p></article>
-            <article><h3>Digital Solutions</h3><p>Simple, accessible technology solutions designed to solve everyday problems.</p></article>
-        </div>
-    </div>
-
-    <!-- Interactive building-cost estimator. -->
-    <div id="construction-cost-estimator" class="tab-content">
-        <section class="civ-estimator-section">
-            <div class="civ-estimator-container">
-                <div class="civ-estimator-header">
-                    <h2>Construction Cost Estimator</h2>
-                    <p><strong>Calculate approximate building construction costs based on current Indian civil engineering standards.</strong></p>
-                </div>
-
-                <div class="civ-estimator-grid">
-                    <div class="civ-estimator-card">
-                        <div class="civ-input-group">
-                            <label for="civ-area">Total Built-up Area (Sq. Ft.)</label>
-                            <input type="number" id="civ-area" placeholder="e.g. 1200" min="1">
-                        </div>
-
-                        <div class="civ-input-group">
-                            <label for="civ-quality">Construction Quality / Class</label>
-                            <select id="civ-quality">
-                                <option value="1500">Normal / Class C (Avg. ₹1,500/sq.ft)</option>
-                                <option value="1800" selected>Standard / Class B (Avg. ₹1,800/sq.ft)</option>
-                                <option value="2500">Premium / Class A (Avg. ₹2,500/sq.ft)</option>
-                            </select>
-                        </div>
-
-                        <button type="button" class="civ-calc-btn" onclick="civCalculateCost()">Calculate Estimate</button>
-                        <p id="civErrorMessage" class="inline-message" aria-live="polite"></p>
-                    </div>
-
-                    <div class="civ-estimator-card civ-results-box" id="civResultsBox">
-                        <h3>Approximate Cost Breakup</h3>
-                        <div class="civ-result-item"><span>Cement (16.4%)</span><strong id="civResCement">₹0</strong></div>
-                        <div class="civ-result-item"><span>Steel (24.6%)</span><strong id="civResSteel">₹0</strong></div>
-                        <div class="civ-result-item"><span>Sand & Aggregate (12.3%)</span><strong id="civResSand">₹0</strong></div>
-                        <div class="civ-result-item"><span>Bricks & Tiles (6.7%)</span><strong id="civResBricks">₹0</strong></div>
-                        <div class="civ-result-item"><span>Labour Cost (40.0%)</span><strong id="civResLabour">₹0</strong></div>
-                        <div class="civ-total-row"><span>Total Estimated Cost</span><span id="civResTotal">₹0</span></div>
-                        <p class="civ-disclaimer">*Disclaimer: These are approximate market values. Actual costs may vary depending on local material rates and site location.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
     </div>
 
     <!-- Certificates are populated from the certificate data below. -->
@@ -971,18 +1002,304 @@
                 </div>
             </div>
         </section>
+        <div class="civil-calculator-grid">
+            <section class="civ-estimator-card civil-calculator-card" aria-labelledby="concrete-tool-title">
+                <h3 id="concrete-tool-title">Concrete Quantity &amp; Materials</h3>
+                <p class="calculator-note">Estimate a rectangular pour from its dimensions, mix ratio, and wastage allowance.</p>
+                <div class="civil-calculator-controls">
+                    <div class="civ-input-group">
+                        <label for="concrete-length">Length (m)</label>
+                        <input id="concrete-length" type="number" min="0.01" step="any" placeholder="e.g. 4">
+                    </div>
+                    <div class="civ-input-group">
+                        <label for="concrete-width">Width (m)</label>
+                        <input id="concrete-width" type="number" min="0.01" step="any" placeholder="e.g. 3">
+                    </div>
+                    <div class="civ-input-group">
+                        <label for="concrete-depth">Depth / thickness (m)</label>
+                        <input id="concrete-depth" type="number" min="0.01" step="any" placeholder="e.g. 0.15">
+                    </div>
+                    <div class="civ-input-group">
+                        <label for="concrete-mix">Nominal mix ratio</label>
+                        <select id="concrete-mix">
+                            <option value="1:1.5:3">1 : 1.5 : 3</option>
+                            <option value="1:2:4" selected>1 : 2 : 4</option>
+                            <option value="1:3:6">1 : 3 : 6</option>
+                        </select>
+                    </div>
+                    <div class="civ-input-group">
+                        <label for="concrete-wastage">Wastage (%)</label>
+                        <input id="concrete-wastage" type="number" min="0" max="25" step="any" value="5">
+                    </div>
+                </div>
+                <button class="civ-calc-btn" type="button" onclick="calculateConcreteMaterials()">Calculate Materials</button>
+                <p id="concreteError" class="inline-message" aria-live="polite"></p>
+                <div class="calculation-output" id="concreteResults" aria-live="polite" hidden>
+                    <dl>
+                        <div class="result-row"><dt>Wet concrete volume</dt><dd id="concreteWetVolume"></dd></div>
+                        <div class="result-row"><dt>Dry material volume</dt><dd id="concreteDryVolume"></dd></div>
+                        <div class="result-row"><dt>Cement required</dt><dd id="concreteCementBags"></dd></div>
+                        <div class="result-row"><dt>Sand</dt><dd id="concreteSand"></dd></div>
+                        <div class="result-row"><dt>Coarse aggregate</dt><dd id="concreteAggregate"></dd></div>
+                    </dl>
+                    <p class="calculation-assumption">Estimate uses a 1.54 dry-volume factor, 1,440 kg/m³ cement density, and 50 kg bags. Nominal ratios are not a substitute for an approved design mix.</p>
+                </div>
+            </section>
+
+            <section class="civ-estimator-card civil-calculator-card" aria-labelledby="rebar-tool-title">
+                <h3 id="rebar-tool-title">Reinforcement Bar Weight</h3>
+                <p class="calculator-note">Estimate theoretical bar weight from diameter, cut length, quantity, and wastage.</p>
+                <div class="civil-calculator-controls">
+                    <div class="civ-input-group">
+                        <label for="rebar-diameter">Bar diameter (mm)</label>
+                        <select id="rebar-diameter">
+                            <option value="6">6 mm</option>
+                            <option value="8">8 mm</option>
+                            <option value="10">10 mm</option>
+                            <option value="12" selected>12 mm</option>
+                            <option value="16">16 mm</option>
+                            <option value="20">20 mm</option>
+                            <option value="25">25 mm</option>
+                            <option value="32">32 mm</option>
+                        </select>
+                    </div>
+                    <div class="civ-input-group">
+                        <label for="rebar-length">Cut length per bar (m)</label>
+                        <input id="rebar-length" type="number" min="0.01" step="any" placeholder="e.g. 12">
+                    </div>
+                    <div class="civ-input-group">
+                        <label for="rebar-quantity">Number of bars</label>
+                        <input id="rebar-quantity" type="number" min="1" step="1" placeholder="e.g. 10">
+                    </div>
+                    <div class="civ-input-group">
+                        <label for="rebar-wastage">Wastage (%)</label>
+                        <input id="rebar-wastage" type="number" min="0" max="25" step="any" value="0">
+                    </div>
+                </div>
+                <button class="civ-calc-btn" type="button" onclick="calculateRebarWeight()">Calculate Bar Weight</button>
+                <p id="rebarError" class="inline-message" aria-live="polite"></p>
+                <div class="calculation-output" id="rebarResults" aria-live="polite" hidden>
+                    <dl>
+                        <div class="result-row"><dt>Total cut length</dt><dd id="rebarTotalLength"></dd></div>
+                        <div class="result-row"><dt>Unit weight</dt><dd id="rebarUnitWeight"></dd></div>
+                        <div class="result-row"><dt>Theoretical weight</dt><dd id="rebarBaseWeight"></dd></div>
+                        <div class="result-row"><dt>Weight incl. wastage</dt><dd id="rebarFinalWeight"></dd></div>
+                    </dl>
+                    <p class="calculation-assumption">Uses the approximate formula d²/162 kg per metre. Final quantities should follow the structural drawings, bar bending schedule, and applicable code.</p>
+                </div>
+            </section>
+        </div>
+        <section class="civ-estimator-section" style="margin-top:24px;" aria-labelledby="construction-cost-title">
+            <div class="civ-estimator-container">
+                <div class="civ-estimator-header">
+                    <h2 id="construction-cost-title">Construction Cost Estimator</h2>
+                    <p><strong>Calculate approximate building construction costs based on current Indian civil engineering standards.</strong></p>
+                </div>
+
+                <div class="civ-estimator-grid">
+                    <div class="civ-estimator-card">
+                        <div class="civ-input-group">
+                            <label for="civ-area">Total Built-up Area (Sq. Ft.)</label>
+                            <input type="number" id="civ-area" placeholder="e.g. 1200" min="1">
+                        </div>
+
+                        <div class="civ-input-group">
+                            <label for="civ-quality">Construction Quality / Class</label>
+                            <select id="civ-quality">
+                                <option value="1500">Normal / Class C (Avg. ₹1,500/sq.ft)</option>
+                                <option value="1800" selected>Standard / Class B (Avg. ₹1,800/sq.ft)</option>
+                                <option value="2500">Premium / Class A (Avg. ₹2,500/sq.ft)</option>
+                            </select>
+                        </div>
+
+                        <button type="button" class="civ-calc-btn" onclick="civCalculateCost()">Calculate Estimate</button>
+                        <p id="civErrorMessage" class="inline-message" aria-live="polite"></p>
+                    </div>
+
+                    <div class="civ-estimator-card civ-results-box" id="civResultsBox">
+                        <h3>Approximate Cost Breakup</h3>
+                        <div class="civ-result-item"><span>Cement (16.4%)</span><strong id="civResCement">₹0</strong></div>
+                        <div class="civ-result-item"><span>Steel (24.6%)</span><strong id="civResSteel">₹0</strong></div>
+                        <div class="civ-result-item"><span>Sand & Aggregate (12.3%)</span><strong id="civResSand">₹0</strong></div>
+                        <div class="civ-result-item"><span>Bricks & Tiles (6.7%)</span><strong id="civResBricks">₹0</strong></div>
+                        <div class="civ-result-item"><span>Labour Cost (40.0%)</span><strong id="civResLabour">₹0</strong></div>
+                        <div class="civ-total-row"><span>Total Estimated Cost</span><span id="civResTotal">₹0</span></div>
+                        <p class="civ-disclaimer">*Disclaimer: These are approximate market values. Actual costs may vary depending on local material rates and site location.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 
     <!-- Quick-reference engineering resources and site checklists. -->
     <div id="resources" class="tab-content">
-        <h2>Engineering Resources</h2>
-        <div class="content-grid">
-            <article><h3>Site Inspection Checklist</h3><p>Review drawings, levels, dimensions, reinforcement, formwork, safety measures, and concrete quality before each pour.</p></article>
-            <article><h3>Material Quality Checks</h3><p>Check cement storage, aggregate cleanliness, sand grading, brick absorption, and steel markings before accepting materials.</p></article>
-            <article><h3>Useful Conversions</h3><p>1 m = 3.281 ft &nbsp;•&nbsp; 1 m² = 10.764 sq.ft &nbsp;•&nbsp; 1 m³ = 35.315 cu.ft</p></article>
-            <article><h3>Concrete Best Practices</h3><p>Use approved mix designs, measure materials accurately, compact concrete properly, and maintain curing as specified.</p></article>
-            <article><h3>Project Documentation</h3><p>Keep daily progress reports, quantity measurements, test results, photographs, drawings, and change records organized.</p></article>
-            <article><h3>Safety First</h3><p>Use appropriate PPE, maintain safe access, protect openings, inspect scaffolding, and report hazards immediately.</p></article>
+        <h2>Construction Methodology A–Z</h2>
+        <div class="construction-guide">
+            <p class="guide-intro">A field reference for a junior civil engineer. Work from the latest approved drawings, specifications, method statements, inspection and test plan (ITP), permits, and safety plan. Record what you observe and measure; refer design decisions and departures to the responsible engineer.</p>
+
+            <section class="guide-stage">
+                <h3>How to Use This Guide on Site</h3>
+                <ul>
+                    <li>Before each activity, check drawing number and revision, location, grid, level, specification, approved material, method statement, and required inspection hold point.</li>
+                    <li>Prepare a short activity checklist with the foreman. Confirm manpower, tools, access, permits, sequence, tolerances, test equipment, and emergency controls.</li>
+                    <li>Measure against project benchmarks and datums. Write units, instrument, date, weather, location, and drawing reference in every field record.</li>
+                    <li>Raise an RFI for a missing or conflicting detail. Raise an inspection request before work is concealed. Record non-conforming work and its approved correction.</li>
+                    <li>Do not approve a design change, accept a failed test, or instruct work outside your authority. Escalate it to the site engineer or engineer of record.</li>
+                </ul>
+            </section>
+
+            <section class="guide-stage">
+                <h3>1. Pre-Construction Surveys &amp; Investigations</h3>
+                <p>Complete investigations before final design and mobilization. Use qualified surveyors and testing agencies. Record coordinates, benchmarks, methods, dates, limitations, and signed reports.</p>
+                <h4>Survey and investigation sequence</h4>
+                <ul>
+                    <li><strong>Boundary and cadastral survey:</strong> Confirm plot limits, ownership references, easements, rights-of-way, and encroachments against legal records.</li>
+                    <li><strong>Control and benchmark survey:</strong> Establish protected horizontal control points and vertical benchmarks tied to the project datum.</li>
+                    <li><strong>Topographical survey:</strong> Use total station, GNSS, level, or an approved method to map contours, spot levels, slopes, trees, buildings, roads, drainage paths, water bodies, and visible utilities. Close level loops and check control before using levels for quantities or setting out.</li>
+                    <li><strong>Topographical deliverable:</strong> Provide a referenced plan with datum, north arrow, contour interval, control-point schedule, benchmark RLs, survey date, equipment/method, and stated accuracy or limitations.</li>
+                    <li><strong>Geotechnical and soil investigation:</strong> Locate boreholes or test pits across the proposed footprint. Use SPT, CPT, or specified field tests; log strata, sample depths, groundwater strikes, and refusal. Lab tests may include moisture content, sieve analysis, Atterberg limits, specific gravity, compaction, and CBR as relevant.</li>
+                    <li><strong>Geotechnical interpretation:</strong> Check the report for groundwater range, allowable or design resistance basis, settlement, liquefaction or expansive-soil risk, slope stability, excavation support, ground improvement, and foundation recommendations. Confirm recommendations match the actual structure and site levels.</li>
+                    <li><strong>Groundwater and dewatering assessment:</strong> Measure seasonal groundwater where relevant. Assess seepage, uplift, nearby wells, discharge route, and the effect of pumping on adjacent structures.</li>
+                    <li><strong>Utility survey:</strong> Collect owner records, scan with suitable electromagnetic or GPR methods, mark confidence/uncertainty, and verify critical crossings by permitted hand-dug or vacuum trial holes. Identify water, sewer, stormwater, power, gas, telecom, and abandoned lines.</li>
+                    <li><strong>Utility deliverable:</strong> Prepare a coordinated utility plan with service type, route, depth where verified, owner, status, protection/diversion action, and safe-dig exclusion zones. Treat unverified records as approximate.</li>
+                    <li><strong>Environmental baseline and impact surveys:</strong> Check air, noise, surface water, ecology, trees, protected habitats, contamination, and required permits or mitigation. Arrange hazardous-material testing before disturbing suspect ground or existing buildings.</li>
+                    <li><strong>Hydrology and drainage survey:</strong> Delineate catchments, runoff paths, flood levels, drainage capacity, outfalls, and erosion risk. Confirm finished-floor and site-drainage criteria.</li>
+                    <li><strong>Hydrographic or bathymetric survey:</strong> For waterfront, river, or marine work, map bed levels, shoreline, water depth, currents, sediment, and navigation constraints.</li>
+                    <li><strong>Traffic and access survey:</strong> Check road capacity, turning paths, pedestrian routes, delivery restrictions, parking, and temporary traffic-control needs.</li>
+                    <li><strong>Neighbouring-property condition survey:</strong> Photograph and record cracks, levels, retaining walls, and drainage conditions before excavation, piling, or vibration-producing work.</li>
+                    <li><strong>Archaeological, heritage, and materials-source surveys:</strong> Obtain specialist clearance where required; assess borrow pits, quarries, spoil locations, and haul routes before relying on them.</li>
+                </ul>
+                <h4>Closeout before design release</h4>
+                <ul>
+                    <li>Review field-book arithmetic and survey closures; compare coordinates, RLs, borehole locations, and utility findings against the proposed layout.</li>
+                    <li>Resolve utility clashes, ground risks, environmental controls, access limits, and authority approvals.</li>
+                    <li>Issue signed plans, raw/processed survey data where required, logs, laboratory certificates, photographs, limitations, and investigation reports to the designer and construction team.</li>
+                </ul>
+            </section>
+
+            <section class="guide-stage">
+                <h3>2. Site Preparation &amp; Mobilization</h3>
+                <ul>
+                    <li>Review issued-for-construction drawings, specifications, permits, method statements, inspection plans, emergency contacts, and approved baseline programme.</li>
+                    <li>Set up site fencing, gates, signs, access control, welfare, first aid, fire points, temporary power and water, lighting, storage, and waste areas.</li>
+                    <li>Brief workers and subcontractors on hazards, PPE, permits to work, lifting plans, emergency routes, and daily toolbox talks.</li>
+                    <li>Protect survey control, neighbouring property, trees to remain, watercourses, and identified services. Isolate or divert utilities only with the utility owner’s approval.</li>
+                    <li>Clear approved vegetation and obstructions. Strip and stockpile reusable topsoil separately. Dispose of waste through approved routes.</li>
+                    <li>Install silt fences, sediment traps, wheel wash, dust suppression, noise controls, and temporary drainage before major earthworks.</li>
+                    <li>Set out building lines, grid points, offsets, and excavation limits from verified control. Independently check critical dimensions and levels.</li>
+                    <li>Excavate in planned stages. Use shoring, battering, edge protection, access ladders, and inspection after rain or ground change.</li>
+                    <li>Manage groundwater and surface water with an approved dewatering and discharge plan. Do not undermine nearby foundations.</li>
+                    <li>Track cut/fill quantities from surveyed existing and formation levels. Keep topsoil separate; use only approved fill and document source, classification, and moisture condition.</li>
+                    <li>Place fill in specified loose-layer thicknesses. Adjust moisture near the specified range and compact with approved plant and passes.</li>
+                    <li>Test field density by the project-approved method and compare with the specified percentage of the laboratory Proctor maximum dry density. Record test location, layer, depth, moisture, result, and retest.</li>
+                    <li>Grade and compact formation to line and level. Proof-check where specified; remove soft spots, replace as directed, and obtain formation approval before blinding or covering.</li>
+                </ul>
+            </section>
+
+            <section class="guide-stage">
+                <h3>3. Foundation Work</h3>
+                <ul>
+                    <li>Confirm the foundation system from the approved geotechnical report and structural drawings. Do not change footing type or depth in the field without written approval.</li>
+                    <li>Choose isolated, strip, combined, raft, or pile foundations based on loads, soil, groundwater, settlement, access, and adjacent assets.</li>
+                    <li>Before excavation, locate services and install designed shoring, sheet piles, trench support, or safe side slopes as required. Inspect support routinely.</li>
+                    <li>Excavate to line and level. Keep the formation dry and undisturbed. Have unsuitable soil reviewed; do not conceal it with fill or concrete.</li>
+                    <li>At formation, request geotechnical inspection. Compare encountered soil and groundwater with the report; photograph and log any variation before approval.</li>
+                    <li>For piles, verify set-out and verticality; record rig, diameter, founding level, strata, penetration/refusal, concrete volume, reinforcement cage, and interruptions for each pile. Complete specified integrity and static/dynamic load tests.</li>
+                    <li>For footings or rafts, check the load path and approved design for bearing pressure, settlement, eccentricity, punching shear, one-way shear, flexure, development length, and reinforcement detailing; do not redesign on site.</li>
+                    <li>Place blinding on approved formation. Check reinforcement against BBS and drawings: bar mark, diameter, spacing, laps, anchorage, chairs, cover blocks, starter bars, waterstops, and embedded services. Request pre-pour inspection.</li>
+                    <li>Check formwork dimensions, levels, stability, cover, concrete grade, delivery tickets, specified workability/slump, sampling IDs, placing sequence, vibration, construction joints, and curing plan.</li>
+                    <li>Keep the pour card, concrete volume reconciliation, test sample register, inspection release, curing log, and as-built foundation levels with the daily records.</li>
+                    <li>Waterproof below-grade faces where specified. Protect membranes before backfill. Install foundation drainage and inspect connections.</li>
+                    <li>Backfill with approved material in controlled layers. Test compaction and keep heavy plant away from green concrete and unsupported walls.</li>
+                </ul>
+            </section>
+
+            <section class="guide-stage">
+                <h3>4. Sub-Structure &amp; Super-Structure</h3>
+                <h4>Sub-structure</h4>
+                <ul>
+                    <li>Construct pile caps, ground beams, plinth beams, retaining walls, basement slabs, and service trenches to approved drawings.</li>
+                    <li>Coordinate sleeves, block-outs, earthing, waterstops, construction joints, and waterproofing before concrete placement.</li>
+                    <li>Verify levels, reinforcement, cover, formwork, access, pour sequence, and inspection release. Cure and protect concrete for the specified period.</li>
+                </ul>
+                <h4>Super-structure</h4>
+                <ul>
+                    <li>Build the frame floor by floor: columns, walls, beams, slabs, stairs, and connections. Maintain line, plumb, level, and temporary stability.</li>
+                    <li>Check reinforcement grade, bar size, spacing, laps, anchorage, cover, and bar-bending schedule before each pour.</li>
+                    <li>Reconcile BBS bar marks and theoretical quantities with delivered steel. Check cutting lengths, bend shapes, lap locations, congestion, cover, and approved couplers against structural details.</li>
+                    <li>Check formwork dimensions, line, level, plumb, camber, joints, release agent, props, bracing, pour rate, and reshoring sequence. Do not remove props early.</li>
+                    <li>Before concrete placement, confirm approved mix, grade, plant ticket, access, pump position, standby vibrator, pour sequence, weather plan, and cube/cylinder sampling plan.</li>
+                    <li>During the pour, log truck arrival and discharge times, workability/slump and sample IDs as specified. Place in planned lifts, avoid segregation, compact without displacing steel, and form planned joints.</li>
+                    <li>After placement, finish to level, protect against rapid moisture loss or rain, cure to specification, strip only after approval, and record defects/repairs with engineer acceptance.</li>
+                    <li>Build masonry to the specified bond, line, level, joint thickness, and restraint details. Install lintels, ties, damp-proof courses, and movement joints as designed.</li>
+                    <li>Install roof framing or slab, bracing, insulation, falls, waterproofing, flashings, outlets, and safe access. Conduct specified water-tightness checks.</li>
+                    <li>For structural steel, check material certificates, member marks, connection details, bolt grade/tightening method, weld procedure, welder qualification, and specified NDT reports.</li>
+                    <li>For masonry, sample units and mortar as specified; check plumb, level, openings, joint thickness, wall ties, lintels, curing, and interfaces with the frame.</li>
+                    <li>Keep inspection records for materials, concrete test results and trends, welds, bolts, masonry, as-built levels, and non-conformance corrections.</li>
+                </ul>
+            </section>
+
+            <section class="guide-stage">
+                <h3>5. MEP Works: Mechanical, Electrical &amp; Plumbing</h3>
+                <ul>
+                    <li>Coordinate architectural, structural, and MEP shop drawings before installation. Resolve clashes and approve sleeves, openings, supports, and equipment loads.</li>
+                    <li>Install only approved materials. Check storage, identification, routes, gradients, supports, access clearances, and fire-stopping requirements.</li>
+                    <li>Check coordinated reflected-ceiling and builder's-work drawings. Mark sleeves and openings before the pour; never cut structural reinforcement without written approval.</li>
+                    <li><strong>Plumbing:</strong> Check pipe material/class, jointing, gradients, cleanouts, venting, supports, and access. Pressure-test water lines; conduct drainage leakage/flow tests before concealment.</li>
+                    <li><strong>Electrical:</strong> Check cable size and routing against load schedules, segregation, containment fill, bend radius, earthing continuity, and panel schedules. Test continuity, insulation resistance, polarity, phase sequence, and protective devices.</li>
+                    <li><strong>Mechanical and fire systems:</strong> Verify equipment duty and location, duct route/support, access for filters and valves, fire dampers, controls, and approved fire-system layout. Test, balance, and commission to approved procedures.</li>
+                    <li>Inspect concealed services, supports, insulation, fire stopping, and access panels before closing walls, ceilings, shafts, or trenches.</li>
+                    <li>Label circuits, valves, equipment, and isolators. Complete flushing, pressure tests, balancing, functional tests, and integrated commissioning.</li>
+                    <li>Record test boundaries, instrument ID/calibration, test pressure or values, duration, witness, result, retest, approved changes, and commissioning defects before closing ceilings or shafts.</li>
+                </ul>
+            </section>
+
+            <section class="guide-stage">
+                <h3>6. Finishing Works, Final Inspection &amp; Handover</h3>
+                <ul>
+                    <li>Confirm walls, services, and waterproofing have passed inspection before plaster, screed, ceiling, or finish work starts.</li>
+                    <li>Complete plastering, floor screeds, tiling, painting, doors, windows, glazing, joinery, ceilings, fixtures, and external works in a protected sequence.</li>
+                    <li>Check substrate preparation, samples, colour, dimensions, level, falls, joints, alignment, adhesion, and manufacturer installation instructions.</li>
+                    <li>Inspect wet-area waterproofing and ponding tests before tiling. Check floor falls to drains, door clearances, sealant joints, and water entry at service penetrations.</li>
+                    <li>Use approved mock-ups and material samples as the quality benchmark. Record room-by-room finish checks and protect accepted work from following trades.</li>
+                    <li>Protect completed finishes. Remove debris safely and maintain ventilation, fire protection, access, and housekeeping.</li>
+                    <li>Test MEP systems under operating conditions. Complete authority inspections, fire and life-safety checks, accessibility checks, and water-tightness tests.</li>
+                    <li>Walk the work with the client and engineer. Log defects by location, assign owners and dates, correct them, and reinspect before acceptance.</li>
+                    <li>Submit as-built drawings, survey records, test reports, warranties, equipment manuals, asset registers, permits, and operation and maintenance instructions.</li>
+                    <li>Train the operator, hand over keys and controls, close permits, remove temporary works, restore affected areas, and obtain written completion acceptance.</li>
+                    <li>Compile a traceable closeout index: drawing/as-built revision, asset tag, test certificate, warranty, manual, responsible vendor, and handover date for every system.</li>
+                </ul>
+            </section>
+
+            <section class="guide-stage">
+                <h3>Controls That Apply at Every Stage</h3>
+                <ul>
+                    <li>Use current approved drawings and record revisions at the workface.</li>
+                    <li>Stop work for unsafe conditions, unknown services, unexpected ground, or work that fails inspection.</li>
+                    <li>Use inspection and test plans with hold points before concrete pours, backfill, waterproofing, and concealment of MEP services.</li>
+                    <li>Keep daily records of labour, plant, weather, deliveries, inspections, tests, instructions, and incidents.</li>
+                    <li>Protect workers, the public, adjacent property, and the environment. Follow local law and project-specific procedures.</li>
+                </ul>
+            </section>
+
+            <section class="guide-stage">
+                <h3>Junior Engineer Logbook &amp; Reference Standards</h3>
+                <h4>Records to maintain</h4>
+                <ul>
+                    <li><strong>Survey field book:</strong> Record station, backsight, intermediate/foresight, instrument height, point ID, RL, units, and remarks. Check levelling arithmetic: sum of backsights minus sum of foresights should equal last RL minus first RL.</li>
+                    <li><strong>Daily site diary:</strong> Log date, weather, work area, drawing revision, crew, plant, deliveries, progress quantities, instructions, inspections, delays, and safety/environment observations.</li>
+                    <li><strong>Concrete pour file:</strong> Keep pre-pour checklist, approved mix, pour location/volume, delivery tickets, workability readings, sample IDs, placement/curing times, cube results, and repair approvals.</li>
+                    <li><strong>Reinforcement file:</strong> Keep approved BBS, steel certificates, bar-mark checks, cutting/bending revisions, inspection releases, and measured quantities.</li>
+                    <li><strong>Earthwork and QA file:</strong> Keep source approvals, layer records, moisture/density results, survey levels, inspection requests, test failures, corrective actions, and retests.</li>
+                    <li><strong>Coordination and closeout:</strong> Track RFIs, submittals, method statements, material approvals, NCRs, MEP test sheets, snag list, and as-built markups by revision.</li>
+                </ul>
+                <h4>Code and specification checks</h4>
+                <ul>
+                    <li>For Indian projects, commonly referenced standards may include IS 456 (concrete), IS 875 (loads), IS 1893 (seismic design), IS 13920 (ductile detailing), IS 1786 (reinforcing steel), IS 383 (aggregates), IS 10262 (mix proportioning), IS 2911 (piles), and relevant IS 2720 soil-test parts.</li>
+                    <li>These are examples, not a complete or automatically applicable list. Check the latest editions, amendments, project-adopted codes, authority requirements, and contract specifications before use.</li>
+                    <li>Use approved design calculations and the engineer's signed drawings for acceptance. A field guide or rule of thumb cannot replace structural design, geotechnical review, or statutory approval.</li>
+                </ul>
+            </section>
         </div>
     </div>
 
@@ -1117,6 +1434,77 @@
             var converted = value * fromUnit.factor / toUnit.factor;
             var formatted = Number(converted.toPrecision(8)).toLocaleString(undefined, { maximumSignificantDigits: 8 });
             output.textContent = value + ' ' + fromUnit.value + ' = ' + formatted + ' ' + toUnit.value;
+        }
+
+        function calculateConcreteMaterials() {
+            var length = Number(document.getElementById('concrete-length').value);
+            var width = Number(document.getElementById('concrete-width').value);
+            var depth = Number(document.getElementById('concrete-depth').value);
+            var wastage = Number(document.getElementById('concrete-wastage').value);
+            var ratio = document.getElementById('concrete-mix').value.split(':').map(Number);
+            var error = document.getElementById('concreteError');
+            var results = document.getElementById('concreteResults');
+
+            if (![length, width, depth].every(function (value) { return Number.isFinite(value) && value > 0; }) ||
+                !Number.isFinite(wastage) || wastage < 0 || wastage > 25) {
+                error.textContent = 'Enter positive dimensions and a wastage value from 0 to 25%.';
+                error.classList.add('show');
+                results.hidden = true;
+                return;
+            }
+
+            var wetVolume = length * width * depth;
+            var dryVolume = wetVolume * (1 + wastage / 100) * 1.54;
+            var totalParts = ratio.reduce(function (sum, part) { return sum + part; }, 0);
+            var cementVolume = dryVolume * ratio[0] / totalParts;
+            var sandVolume = dryVolume * ratio[1] / totalParts;
+            var aggregateVolume = dryVolume * ratio[2] / totalParts;
+            var cementBags = cementVolume * 1440 / 50;
+            var format = function (value) {
+                return value.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            };
+
+            document.getElementById('concreteWetVolume').textContent = format(wetVolume) + ' m³';
+            document.getElementById('concreteDryVolume').textContent = format(dryVolume) + ' m³';
+            document.getElementById('concreteCementBags').textContent = format(cementBags) + ' bags; buy ' + Math.ceil(cementBags) + ' whole bags';
+            document.getElementById('concreteSand').textContent = format(sandVolume) + ' m³';
+            document.getElementById('concreteAggregate').textContent = format(aggregateVolume) + ' m³';
+            error.textContent = '';
+            error.classList.remove('show');
+            results.hidden = false;
+        }
+
+        function calculateRebarWeight() {
+            var diameter = Number(document.getElementById('rebar-diameter').value);
+            var length = Number(document.getElementById('rebar-length').value);
+            var quantity = Number(document.getElementById('rebar-quantity').value);
+            var wastage = Number(document.getElementById('rebar-wastage').value);
+            var error = document.getElementById('rebarError');
+            var results = document.getElementById('rebarResults');
+
+            if (!Number.isFinite(length) || length <= 0 || !Number.isInteger(quantity) || quantity <= 0 ||
+                !Number.isFinite(wastage) || wastage < 0 || wastage > 25) {
+                error.textContent = 'Enter a positive bar length and whole-bar quantity; wastage must be 0 to 25%.';
+                error.classList.add('show');
+                results.hidden = true;
+                return;
+            }
+
+            var unitWeight = diameter * diameter / 162;
+            var totalLength = length * quantity;
+            var baseWeight = unitWeight * totalLength;
+            var finalWeight = baseWeight * (1 + wastage / 100);
+            var format = function (value) {
+                return value.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            };
+
+            document.getElementById('rebarTotalLength').textContent = format(totalLength) + ' m';
+            document.getElementById('rebarUnitWeight').textContent = format(unitWeight) + ' kg/m';
+            document.getElementById('rebarBaseWeight').textContent = format(baseWeight) + ' kg';
+            document.getElementById('rebarFinalWeight').textContent = format(finalWeight) + ' kg';
+            error.textContent = '';
+            error.classList.remove('show');
+            results.hidden = false;
         }
 
         // Estimate total building cost and split it into approximate cost categories.
